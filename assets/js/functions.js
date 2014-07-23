@@ -168,12 +168,51 @@ var $objCache = {};
 
 // 页面
 (function(puma, constructor) {
+	var $pg = $objCache;
 	constructor[puma] = {
-		pgsize: function(){
-			var $pg = $objCache;
+		pgsize : function() {
 			var pgH = $pg.win.height();
 			$pg.main.height(pgH);
 			$pg.mainBox.height(pgH - 50);
+		},
+		domEvent : function() {
+			$pg.pgPrev.click(function() {
+				TweenMax.to($pg.pg1, 3, {
+					'left' : '0%'
+				});
+			});
+			$pg.pgNext.click(function() {
+				TweenMax.to($pg.pg1, 3, {
+					'left' : '-100%'
+				});
+			});
+		},
+		load : function() {
+			var cent1 = $('div.cent1');
+			var cent2 = $('div.cent2');
+			var main = $('div.mainpg');
+			var _THIS = this;
+			this.amin1 = function() {
+				TweenMax.from(cent1, 1, {
+					'left' : '-80px',
+					'opacity' : 0
+				});
+				TweenMax.from(cent2, 1, {
+					'left' : '80px',
+					'opacity' : 0
+				});
+			}
+			this.amin2 = function() {
+				TweenMax.from($pg.btnav, 1, {
+					'bottom' : '-50px',
+					'backgroundColor' : '#CCCCCC',
+					'opacity' : 0,
+					onComplete : function() {
+						_THIS.amin1();
+					}
+				});
+			}
+			_THIS.amin2();
 		}
 	};
 })('puma', this);
@@ -186,16 +225,21 @@ var $objCache = {};
 			win : $(window),
 			main : $('div.wrapper'),
 			btnav : $('div.btnav'),
-			mainBox : $('div.mainpg')
+			mainBox : $('div.mainpg'),
+			pg1 : $('div.pg1'),
+			pgPrev : $('div.prev'),
+			pgNext : $('div.next')
+
 		}
 		$.extend($objCache, initobj);
 
 		puma.pgsize();
+		puma.domEvent();
 		wushuyi.init();
 	});
 
 	$(window).load(function() {
-
+		puma.load();
 	});
 
 	$(window).resize(function() {
