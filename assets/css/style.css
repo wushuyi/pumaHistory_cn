@@ -103,9 +103,7 @@ body, html {
 	float: left;
 	width: 50px;
 	height: 100%;
-	border-right: solid 1px #
-	000000
-;
+	border-right: solid 1px #000000;
 	background-position: center center;
 	background-repeat: no-repeat;
 	cursor: pointer;
@@ -173,9 +171,12 @@ body, html {
 	width: 250px;
 	height: 16px;
 	float: right;
-	background-image: url('../images/pg1_title.png');
 	background-repeat: no-repeat;
 	background-position: center center;
+}
+.pg1 .tit{
+	width: 250px;
+	background-image: url('../images/pg1_title.png');
 }
 .pg1 {
 	top: 0px;
@@ -222,6 +223,10 @@ body, html {
 	left: 0px;
 	background-color: #000000;
 }
+.pg2 .tit{
+	width: 178px;
+	background-image: url('../images/pg2/pg2_tit.png');
+}
 .pg2 .bg {
 	background-image: url('../images/bg2.jpg');
 }
@@ -241,7 +246,7 @@ body, html {
 .pg4 .bg1 {
 	background-color: #FFFFFF;
 }
-.pg4 .bg img{
+.pg4 .bg img {
 	max-width: 200%;
 }
 .pg4 .bg1 img {
