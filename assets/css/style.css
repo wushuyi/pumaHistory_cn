@@ -55,11 +55,6 @@ textarea:-moz-placeholder {
 	color: #a9a9a9;
 }
 
-/* behavior IE */
-.pie {
-	behavior: url('./assets/js/libs/pie/PIE.htc');
-}
-
 /* postion */
 .absolute {
 	position: absolute;

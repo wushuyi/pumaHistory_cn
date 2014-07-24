@@ -46,7 +46,7 @@
 			$body.height(winH).width(winW);
 			// 改变 页面尺寸 是 需要 重新 获取  需要的 元素 属性
 			var initElement = '.' + _THIS.setings.thisClass;
-			$('initElement').removeAttr('style');
+			$(initElement).removeAttr('style');
 			// 这里需要改进
 			_THIS.setdata();
 		},
@@ -58,7 +58,6 @@
 			var options = _THIS.options;
 			$(initElement).each(function(i) {
 				var $thisDom = $(this);
-
 				objList[i] = _THIS.getAttr($thisDom, initOption);
 			});
 			_THIS.objList = objList;
@@ -70,11 +69,15 @@
 			var $runobj = $(initElement);
 			$body.mousemove(function(e) {
 				$.each(_THIS.objList, function(i) {
-					var thisObj = _THIS.objList[i];
-					var thisCss = {};
-					thisCss = _THIS.getCss(e, thisObj);
-					//$runobj.eq(i).css(thisCss);
-					TweenMax.from($runobj.eq(i), 5, thisCss);
+					var thisDom = $runobj.eq(i);
+					// 不科学的 分组 动画
+					if (thisDom.parents('.pg').hasClass('run')) {
+						var thisObj = _THIS.objList[i];
+						var thisCss = {};
+						thisCss = _THIS.getCss(e, thisObj);
+						//$runobj.eq(i).css(thisCss);
+						TweenMax.from(thisDom, 5, thisCss);
+					}
 				});
 			});
 		}
@@ -208,11 +211,11 @@ var $objCache = {};
 					onComplete : function() {
 						$nextPg.css({
 							'z-index' : '1'
-						});
+						}).addClass('run');
 						$thisPg.css({
 							'left' : '-100%',
 							'z-index' : '0'
-						});
+						}).removeClass('run');
 						pgindex.thisIndex = pgNext;
 						pgindex.lock = false;
 					}
@@ -245,23 +248,35 @@ var $objCache = {};
 					onComplete : function() {
 						$nextPg.css({
 							'z-index' : '1'
-						});
+						}).addClass('run');;
 						$thisPg.css({
 							'left' : '100%',
 							'z-index' : '0'
-						});
+						}).removeClass('run');;
 						pgindex.thisIndex = pgNext;
 						pgindex.lock = false;
 					}
 				});
 			};
-			
+
 			$pg.pgNext.click(function() {
 				pgindex.pgNext();
 			});
-
 			$pg.pgPrev.click(function() {
 				pgindex.pgPrev();
+			});
+			
+			window._NUM_SCROLL=0;
+			$('body').mousewheel(function(e){
+				(e.deltaY > 0) ? window._NUM_SCROLL += 1 : window._NUM_SCROLL -= 1;
+				if(window._NUM_SCROLL >= 5){
+					pgindex.pgPrev();
+					window._NUM_SCROLL=0;
+				}else if(window._NUM_SCROLL <= -5){
+					pgindex.pgNext();
+					window._NUM_SCROLL=0;
+				}
+				//console.log(window._NUM_SCROLL);
 			});
 		},
 		load : function() {
