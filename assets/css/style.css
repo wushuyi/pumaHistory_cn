@@ -84,8 +84,12 @@ a.block {
 	background-repeat: no-repeat;
 }
 /* main page */
+body, html {
+	overflow: hidden;
+}
 .wrapper {
 	position: relative;
+	overflow: hidden;
 }
 .mainpg {
 	width: 100%;
@@ -104,7 +108,9 @@ a.block {
 	float: left;
 	width: 50px;
 	height: 100%;
-	border-right: solid 1px #000;
+	border-right: solid 1px #
+	000000
+;
 	background-position: center center;
 	background-repeat: no-repeat;
 	cursor: pointer;
@@ -157,22 +163,17 @@ a.block {
 	position: absolute;
 	overflow: hidden;
 }
-.pg1{
-	top: 0px;
-	left: 0px;
-}
-.pg1 .bg1 {
+
+.pg .bg {
 	width: 104%;
 	height: 104%;
 	position: absolute;
 	left: -2%;
 	top: -2%;
-	background-image: url('../images/bg1.jpg');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
 }
-
 .pg .tit {
 	width: 250px;
 	height: 16px;
@@ -181,8 +182,17 @@ a.block {
 	background-repeat: no-repeat;
 	background-position: center center;
 }
+.pg1 {
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+	background-color: #000000;
+}
+.pg1 .bg {
+	background-image: url('../images/bg1.jpg');
+}
 
-.pg1 .centBox{
+.pg1 .centBox {
 	width: 454px;
 	height: 258px;
 	position: absolute;
@@ -191,7 +201,7 @@ a.block {
 	margin-top: -130px;
 }
 
-.pg1 .cent1{
+.pg1 .cent1 {
 	width: 270px;
 	height: 62px;
 	position: absolute;
@@ -202,7 +212,7 @@ a.block {
 	background-position: center center;
 }
 
-.pg1 .cent2{
+.pg1 .cent2 {
 	width: 450px;
 	height: 138px;
 	position: absolute;
@@ -212,25 +222,92 @@ a.block {
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-.pg2{
+.pg2 {
 	top: 0px;
-	left: 100%;
-	background-color: blue;
+	left: 0px;
+	background-color: #000000;
 }
-.pg3{
-	top: 0px;
-	left: 100%;
-	background-color: green;
+.pg2 .bg {
+	background-image: url('../images/bg2.jpg');
 }
-.pg4{
+.pg3 {
 	top: 0px;
-	left: 100%;
-	background-color: yellow;
+	left: 0px;
+	background-color: #000000;
 }
-.pg5{
+.pg3 .bg {
+	background-image: url('../images/bg3.jpg');
+}
+.pg4 {
 	top: 0px;
-	left: 100%;
-	background-color: red;
+	left: 0px;
+	background-color: #000000;
+}
+.pg4 .bg1 {
+	background-color: #FFFFFF;
+}
+.pg4 .bg img{
+	max-width: 200%;
+}
+.pg4 .bg1 img {
+	position: absolute;
+	bottom: 0%;
+	right: 0%;
+	margin-bottom: -8%;
+	margin-right: -15%;
+	height: 130%;
+}
+.pg4 .bg2 img {
+	position: absolute;
+	bottom: 0%;
+	right: 0%;
+	margin-bottom: 0%;
+	margin-right: 2%;
+	height: 90%;
+}
+.pg4 .bg3 img {
+	position: absolute;
+	bottom: 0%;
+	right: 0%;
+	margin-bottom: 24%;
+	margin-right: 16%;
+	height: 50%;
+}
+.pg4 .bg4 img {
+	position: absolute;
+	bottom: 0%;
+	right: 0%;
+	margin-right: -16%;
+	margin-bottom: -6%;
+	height: 90%;
+}
+.pg5 {
+	top: 0px;
+	left: 0px;
+	background-color: #FFFFFF;
+}
+
+.pg6 {
+	top: 0px;
+	left: 0px;
+	background-color: #EFEFEF;
+}
+.pg6 .bg {
+	background-image: url('../images/bg6.jpg');
+}
+
+.pg7 {
+	top: 0px;
+	left: 0px;
+	background-color: #FFFFFF;
+}
+.pg7 .bg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	background-image: url('../images/bg7.jpg');
 }
 /* Media queries
  -------------------------------------------------------------------------------*/
