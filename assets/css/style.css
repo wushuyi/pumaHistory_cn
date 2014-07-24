@@ -154,8 +154,12 @@ a.block {
 .pg {
 	width: 100%;
 	height: 100%;
-	position: relative;
+	position: absolute;
 	overflow: hidden;
+}
+.pg1{
+	top: 0px;
+	left: 0px;
 }
 .pg1 .bg1 {
 	width: 104%;
@@ -207,6 +211,26 @@ a.block {
 	background-image: url('../images/pg1_tit2.png');
 	background-repeat: no-repeat;
 	background-position: center center;
+}
+.pg2{
+	top: 0px;
+	left: 100%;
+	background-color: blue;
+}
+.pg3{
+	top: 0px;
+	left: 100%;
+	background-color: green;
+}
+.pg4{
+	top: 0px;
+	left: 100%;
+	background-color: yellow;
+}
+.pg5{
+	top: 0px;
+	left: 100%;
+	background-color: red;
 }
 /* Media queries
  -------------------------------------------------------------------------------*/

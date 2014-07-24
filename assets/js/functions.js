@@ -169,6 +169,7 @@ var $objCache = {};
 // 页面
 (function(puma, constructor) {
 	var $pg = $objCache;
+	var pgindex = {};
 	constructor[puma] = {
 		pgsize : function() {
 			var pgH = $pg.win.height();
@@ -176,15 +177,91 @@ var $objCache = {};
 			$pg.mainBox.height(pgH - 50);
 		},
 		domEvent : function() {
-			$pg.pgPrev.click(function() {
-				TweenMax.to($pg.pg1, 3, {
+			var $pgbox = $('div.pg');
+			pgindex.thisIndex = 0;
+			pgindex.lock = false;
+			pgindex.max = $pgbox.size();
+			pgindex.pgNext = function() {
+				if (pgindex.lock) {
+					return false;
+				}
+				pgindex.lock = true;
+				var pgNext = pgindex.thisIndex + 1;
+				if (pgNext >= pgindex.max) {
+					pgNext = 0;
+				}
+				var $nextPg = $pgbox.eq(pgNext);
+				var $thisPg = $pgbox.eq(pgindex.thisIndex);
+				$thisPg.css({
+					'left' : '0%',
+					'z-index' : '9'
+				});
+				$nextPg.css({
+					'left' : '100%',
+					'z-index' : '10'
+				});
+				TweenMax.to($nextPg, 1, {
 					'left' : '0%'
 				});
-			});
-			$pg.pgNext.click(function() {
-				TweenMax.to($pg.pg1, 3, {
-					'left' : '-100%'
+				TweenMax.to($thisPg, 1, {
+					'left' : '-25%',
+					onComplete : function() {
+						$nextPg.css({
+							'z-index' : '1'
+						});
+						$thisPg.css({
+							'left' : '-100%',
+							'z-index' : '0'
+						});
+						pgindex.thisIndex = pgNext;
+						pgindex.lock = false;
+					}
 				});
+			};
+			pgindex.pgPrev = function() {
+				if (pgindex.lock) {
+					return false;
+				}
+				pgindex.lock = true;
+				var pgNext = pgindex.thisIndex - 1;
+				if (pgNext < 0) {
+					pgNext = pgindex.max - 1;
+				}
+				var $nextPg = $pgbox.eq(pgNext);
+				var $thisPg = $pgbox.eq(pgindex.thisIndex);
+				$thisPg.css({
+					'left' : '0%',
+					'z-index' : '9'
+				});
+				$nextPg.css({
+					'left' : '-100%',
+					'z-index' : '10'
+				});
+				TweenMax.to($nextPg, 1, {
+					'left' : '0%',
+				});
+				TweenMax.to($thisPg, 1, {
+					'left' : '25%',
+					onComplete : function() {
+						$nextPg.css({
+							'z-index' : '1'
+						});
+						$thisPg.css({
+							'left' : '100%',
+							'z-index' : '0'
+						});
+						pgindex.thisIndex = pgNext;
+						pgindex.lock = false;
+					}
+				});
+			};
+			
+			$pg.pgNext.click(function() {
+				pgindex.pgNext();
+			});
+
+			$pg.pgPrev.click(function() {
+				pgindex.pgPrev();
 			});
 		},
 		load : function() {
