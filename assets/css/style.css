@@ -174,7 +174,7 @@ body, html {
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-.pg1 .tit{
+.pg1 .tit {
 	width: 250px;
 	background-image: url('../images/pg1_title.png');
 }
@@ -223,12 +223,26 @@ body, html {
 	left: 0px;
 	background-color: #000000;
 }
-.pg2 .tit{
+.pg2 .tit {
 	width: 178px;
 	background-image: url('../images/pg2/pg2_tit.png');
 }
 .pg2 .bg {
 	background-image: url('../images/bg2.jpg');
+}
+.pg2 .centBox {
+	width: 716px;
+	height: 484px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -242px;
+	margin-left: -358px;
+}
+.pg2 .titImg {
+	width: 124px;
+	height: 148px;
+	background-image: url('../images/pg2/pg2_img1.png');
 }
 .pg3 {
 	top: 0px;
