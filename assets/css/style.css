@@ -148,6 +148,9 @@ body, html {
 	background-repeat: no-repeat;
 	background-position: center center;
 }
+.titBox .icon.b {
+	background-image: url('../images/tit_icon_b.png');
+}
 .titBox .tit {
 	margin-right: 10px;
 	width: 250px;
@@ -262,7 +265,7 @@ body, html {
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-.pg2 .tit1{
+.pg2 .tit1 {
 	width: 268px;
 	height: 62px;
 	position: absolute;
@@ -274,7 +277,7 @@ body, html {
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-.pg2 .tit2{
+.pg2 .tit2 {
 	width: 716px;
 	height: 78px;
 	position: absolute;
@@ -286,7 +289,7 @@ body, html {
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-.pg2 .btn{
+.pg2 .btn {
 	width: 130px;
 	height: 38px;
 	padding: 9px 14px;
@@ -300,14 +303,14 @@ body, html {
 	margin-bottom: 0px;
 	cursor: pointer;
 }
-.pg2 .btn_tit{
+.pg2 .btn_tit {
 	width: 100px;
 	height: 15px;
 	background-image: url('../images/pg2/btn_tit.png');
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
 }
-.pg2 .btn.close .btn_tit{
+.pg2 .btn.close .btn_tit {
 	background-position: 0px -15px;
 }
 .pg3 {
@@ -322,7 +325,7 @@ body, html {
 .pg3 .bg {
 	background-image: url('../images/bg3.jpg');
 }
-.pg3 .centBox{
+.pg3 .centBox {
 	width: 700px;
 	height: 220px;
 	position: absolute;
@@ -331,7 +334,7 @@ body, html {
 	margin-top: -110px;
 	margin-right: 6%;
 }
-.pg3 .titImg{
+.pg3 .titImg {
 	width: 479px;
 	height: 500px;
 	position: absolute;
@@ -343,10 +346,10 @@ body, html {
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-.pg3 .tit1{
+.pg3 .tit1 {
 	width: 338px;
 	height: 62px;
-	position : absolute;
+	position: absolute;
 	top: 0px;
 	left: 0px;
 	margin-top: 0px;
@@ -355,10 +358,10 @@ body, html {
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-.pg3 .tit2{
+.pg3 .tit2 {
 	width: 700px;
 	height: 108px;
-	position : absolute;
+	position: absolute;
 	bottom: 0px;
 	left: 0%;
 	margin-bottom: 0px;
@@ -415,6 +418,88 @@ body, html {
 	left: 0px;
 	background-color: #FFFFFF;
 }
+.pg5 .msgBox1 {
+	width: 33%;
+	height: 60%;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+}
+.pg5 .msgBox2 {
+	width: 34%;
+	height: 40%;
+	position: absolute;
+	top: 0%;
+	left: 33%;
+	border-bottom: 1px solid black;
+}
+.pg5 .msgBox3 {
+	width: 33%;
+	height: 60%;
+	position: absolute;
+	top: 0%;
+	left: 67%;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+}
+.pg5 .msgBox4 {
+	width: 33%;
+	height: 40%;
+	position: absolute;
+	top: 60%;
+	left: 0%;
+	border-right: 1px solid black;
+}
+.pg5 .msgBox5 {
+	width: 34%;
+	height: 60%;
+	position: absolute;
+	top: 40%;
+	left: 33%;
+}
+.pg5 .msgBox6 {
+	width: 33%;
+	height: 40%;
+	position: absolute;
+	top: 60%;
+	left: 67%;
+	border-left: 1px solid black;
+}
+.pg5 h2 {
+	display: block;
+	width: 320px;
+	margin: 80px auto 0 auto;
+	color: #000000;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 30px;
+}
+.pg5 span {
+	color: #666666;
+	display: block;
+	width: 320px;
+	margin: 10px auto 0 auto;
+}
+.pg5 .topH {
+	margin-top: 150px;
+}
+.pg5 .big {
+	font-size: 22px;
+}
+.pg5 .msgBox {
+	cursor: pointer;
+}
+.pg5 .msgBox:hover {
+	background-color: #252525;
+}
+.pg5 .msgBox:hover h2 {
+	color: #FFFFFF;
+}
+.pg5 .msgBox:hover span {
+	color: #FFFFFF;
+}
 
 .pg6 {
 	top: 0px;
@@ -430,6 +515,10 @@ body, html {
 	left: 0px;
 	background-color: #FFFFFF;
 }
+.pg7 .tit {
+	width: 178px;
+	background-image: url('../images/pg7/pg7_tit.png');
+}
 .pg7 .bg {
 	width: 100%;
 	height: 100%;
@@ -437,6 +526,88 @@ body, html {
 	left: 0%;
 	top: 0%;
 	background-image: url('../images/bg7.jpg');
+}
+.pg7 .cent {
+	width: 39%;
+	height: 100%;
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	background-color: #EFEFEF;
+	overflow: hidden;
+}
+.pg7 .moveBtn {
+	width: 54px;
+	height: 54px;
+	position: absolute;
+	top: 50%;
+	left: 39%;
+	margin-top: 10px;
+	margin-left: -28px;
+	background-image: url('../images/pg7/btn_icon.png');
+	cursor: pointer;
+}
+.pg7 .tit1 {
+	width: 478px;
+	height: 64px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -240px;
+	background-image: url('../images/pg7/pg7_tit1.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.pg7 .tit2 {
+	width: 466px;
+	height: 48px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: 0px;
+	margin-left: -233px;
+	background-image: url('../images/pg7/pg7_tit2.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.pg .openBtn {
+	width: 52px;
+	height: 52px;
+	position: absolute;
+	background-image: url('../images/pg7/btn_icon2.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	cursor: pointer;
+}
+.pg7 .openBtn.btn1 {
+	top: 29%;
+	right: 14%;
+}
+.pg7 .openBtn.btn2 {
+	top: 47%;
+	right: 16%;
+}
+.pg7 .popBox {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #000000;
+	filter: alpha(opacity=80);
+	opacity: 0.8;
+	display: none;
+}
+.pg7 .infoBox {
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #FFFFFF;
+	overflow: hidden;
+	display: none;
 }
 /* Media queries
  -------------------------------------------------------------------------------*/

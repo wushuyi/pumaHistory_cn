@@ -1,6 +1,15 @@
 /*
 * author: shuyi.wu
 */
+// 阻止拖动 img 元素
+(function() {
+	function imgdragstart() {
+		return false;
+	}
+
+	for (i in document.images)
+	document.images[i].ondragstart = imgdragstart;
+})();
 // 公共方法
 (function(pubfun, constructor) {
 	constructor[pubfun] = {
@@ -62,7 +71,7 @@
 		// 将获取 的 需要的 元素 属性 压入  this.objList 储存
 		setdata : function() {
 			var _THIS = this;
-			
+
 			var initElement = _THIS.setings.thisElement, initOption = _THIS.setings.thisOption;
 			var objList = {}, objattr = {}, centrePoint = {};
 			var options = _THIS.options;
@@ -99,7 +108,7 @@
 			}
 			attrOption = $.parseJSON(attrOption);
 			objattr = {
-				thisElement: $thisDom,
+				thisElement : $thisDom,
 				offsetTop : $thisDom.offset().top,
 				offsetLeft : $thisDom.offset().left,
 				width : $thisDom.width(),
@@ -138,7 +147,7 @@
 			}
 			attrOption = $.parseJSON(attrOption);
 			objattr = {
-				thisElement: $thisDom,
+				thisElement : $thisDom,
 				offsetTop : $thisDom.offset().top,
 				offsetLeft : $thisDom.offset().left,
 				width : $thisDom.width(),
@@ -202,6 +211,11 @@ var $objCache = {};
 		pg3titImg : $('.pg3 .titImg'),
 		pg3tit1 : $('.pg3 .tit1'),
 		pg3tit2 : $('.pg3 .tit2'),
+		pg7tit : $('.pg7 .tit'),
+		pg7cent : $('.pg7 .cent'),
+		pg7moveBtn : $('.pg7 .moveBtn'),
+		pg7popBox : $('.pg7 .popBox'),
+		pg7infoBox : $('.pg7 .infoBox')
 	};
 	var domList = pgindex.action.object;
 	pgindex.action.thisInit = {
@@ -261,6 +275,9 @@ var $objCache = {};
 				'marginLeft' : '80px',
 				'opacity' : 0
 			});
+			domList.pg3titImg.css({
+				'left' : '100%'
+			});
 		},
 		3 : function() {
 
@@ -272,7 +289,23 @@ var $objCache = {};
 
 		},
 		6 : function() {
-
+			domList.pg7tit.css({
+				'marginTop' : '-20px',
+				'opacity' : 0
+			});
+			domList.pg7cent.css({
+				'width' : '100%'
+			});
+			domList.pg7moveBtn.css({
+				'left' : '100%'
+			});
+			domList.pg7infoBox.css({
+				'width' : '0%'
+			});
+			var uniteObj = pubfun.merge([domList.pg7popBox, domList.pg7infoBox]);
+			uniteObj.css({
+				'display' : 'none'
+			});
 		}
 	};
 	pgindex.action.thisIn = {
@@ -341,6 +374,16 @@ var $objCache = {};
 
 		},
 		6 : function() {
+			TweenMax.to(domList.pg7tit, 1, {
+				'marginTop' : '0px',
+				'opacity' : 1
+			});
+			TweenMax.to(domList.pg7cent, 1, {
+				'width' : '39%',
+			});
+			TweenMax.to(domList.pg7moveBtn, 1, {
+				'left' : '39%',
+			});
 
 		}
 	};
@@ -390,7 +433,10 @@ var $objCache = {};
 
 		},
 		6 : function() {
-
+			TweenMax.to(domList.pg7tit, 1, {
+				'marginTop' : '20px',
+				'opacity' : 0
+			});
 		},
 	};
 	pgindex.action.pg2 = {
@@ -421,6 +467,9 @@ var $objCache = {};
 				}
 			});
 		}
+	};
+	pgindex.action.pg7 = {
+
 	};
 
 	pgindex.pgNext = function() {
@@ -563,6 +612,57 @@ var $objCache = {};
 					_this.removeClass('close');
 				}
 			});
+
+			// pg7 拖动
+			var $moveBtn = $('.moveBtn');
+			var $body = $('body');
+			var $pg7cent = $('.pg7 .cent');
+			var $pg7moveBtn = $('.pg7 .moveBtn');
+			var pg7lock = false;
+			$moveBtn.mousedown(function() {
+				pg7lock = true;
+				$body.mousemove(function(e) {
+					if (pg7lock) {
+						$pg7cent.width(e.clientX);
+						$pg7moveBtn.css({
+							'left' : e.clientX
+						});
+					}
+				});
+			});
+			$body.mouseup(function() {
+				pg7lock = false;
+			});
+
+			// pg7 按钮
+			$('.pg7 .btn1').click(function() {
+				domList.pg7popBox.show();
+				domList.pg7infoBox.show();
+				TweenMax.to($('.pg7 .bg'), .5, {
+					'left' : '-25%'
+				});
+				TweenMax.to(domList.pg7infoBox, .5, {
+					'width' : '50%'
+				});
+				TweenMax.to($('.titBox'), .5, {
+					'right' : '50%'
+				});
+			});
+			$('.pg7 .popBox').click(function() {
+				TweenMax.to($('.pg7 .bg'), .5, {
+					'left' : '0%'
+				});
+				TweenMax.to(domList.pg7infoBox, .5, {
+					'width' : '0%'
+				});
+				TweenMax.to($('.titBox'), .5, {
+					'right' : '0%',
+					onComplete : function() {
+						domList.pg7popBox.hide();
+						domList.pg7infoBox.hide();
+					}
+				});
+			});
 		},
 		load : function() {
 
@@ -588,6 +688,7 @@ var $objCache = {};
 		puma.domEvent();
 		wushuyi.setings.thisElement = '.run .wu-parallax';
 		wushuyi.init();
+
 	});
 
 	$(window).load(function() {
