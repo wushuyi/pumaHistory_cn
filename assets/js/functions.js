@@ -30,7 +30,7 @@
 	constructor[wushuyi] = {
 		// html 参数 设置
 		setings : {
-			thisClass : 'wu-parallax', // 初始化 的 class
+			thisElement : '.wu-parallax', // 初始化 的 class
 			thisOption : 'wu-data' // 参数 设置 attr
 		},
 		// 储存需要的 元素 属性
@@ -55,18 +55,19 @@
 			(winW < 1000) ? winW = 1000 : null;
 			$body.height(winH).width(winW);
 			// 改变 页面尺寸 是 需要 重新 获取  需要的 元素 属性
-			var initElement = '.' + _THIS.setings.thisClass;
-			$(initElement).removeAttr('style');
+
 			// 这里需要改进
 			_THIS.setdata();
 		},
 		// 将获取 的 需要的 元素 属性 压入  this.objList 储存
 		setdata : function() {
 			var _THIS = this;
-			var initElement = '.' + _THIS.setings.thisClass, initOption = _THIS.setings.thisOption;
+			
+			var initElement = _THIS.setings.thisElement, initOption = _THIS.setings.thisOption;
 			var objList = {}, objattr = {}, centrePoint = {};
 			var options = _THIS.options;
-			$(initElement).each(function(i) {
+			_THIS.objList = {};
+			$(initElement).removeAttr('style').each(function(i) {
 				var $thisDom = $(this);
 				objList[i] = _THIS.getAttr($thisDom, initOption);
 			});
@@ -75,11 +76,9 @@
 		// 开始运行
 		run : function() {
 			var _THIS = this;
-			var initElement = '.' + _THIS.setings.thisClass;
-			var $runobj = $(initElement);
 			$body.mousemove(function(e) {
 				$.each(_THIS.objList, function(i) {
-					var thisDom = $runobj.eq(i);
+					var thisDom = _THIS.objList[i].thisElement;
 					var thisObj = _THIS.objList[i];
 					var thisCss = {};
 					thisCss = _THIS.getCss(e, thisObj);
@@ -100,6 +99,7 @@
 			}
 			attrOption = $.parseJSON(attrOption);
 			objattr = {
+				thisElement: $thisDom,
 				offsetTop : $thisDom.offset().top,
 				offsetLeft : $thisDom.offset().left,
 				width : $thisDom.width(),
@@ -138,6 +138,7 @@
 			}
 			attrOption = $.parseJSON(attrOption);
 			objattr = {
+				thisElement: $thisDom,
 				offsetTop : $thisDom.offset().top,
 				offsetLeft : $thisDom.offset().left,
 				width : $thisDom.width(),
@@ -460,6 +461,7 @@ var $objCache = {};
 				pgindex.thisIndex = pgNext;
 				pgindex.lock = false;
 				_THIS.action.thisIn[pgNext]();
+				wushuyi.setdata();
 			}
 		});
 
@@ -504,6 +506,7 @@ var $objCache = {};
 				pgindex.thisIndex = pgNext;
 				pgindex.lock = false;
 				_THIS.action.thisIn[pgNext]();
+				wushuyi.setdata();
 			}
 		});
 	};
@@ -581,9 +584,9 @@ var $objCache = {};
 			pgNext : $('div.next')
 		}
 		$.extend($objCache, initobj);
-
 		puma.pgsize();
 		puma.domEvent();
+		wushuyi.setings.thisElement = '.run .wu-parallax';
 		wushuyi.init();
 	});
 
