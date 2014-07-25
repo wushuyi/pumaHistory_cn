@@ -142,13 +142,20 @@ body, html {
 .titBox .icon {
 	width: 22px;
 	height: 16px;
-	float: right;
+	position: absolute;
+	right: 0px;
 	background-image: url('../images/tit_icon.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 }
 .titBox .tit {
 	margin-right: 10px;
+	width: 250px;
+	height: 16px;
+	right: 20px;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 .pg {
 	width: 100%;
@@ -166,13 +173,6 @@ body, html {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
-}
-.pg .tit {
-	width: 250px;
-	height: 16px;
-	float: right;
-	background-repeat: no-repeat;
-	background-position: center center;
 }
 .pg1 .tit {
 	width: 250px;
@@ -242,15 +242,130 @@ body, html {
 .pg2 .titImg {
 	width: 124px;
 	height: 148px;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	margin-left: -62px;
 	background-image: url('../images/pg2/pg2_img1.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.pg2 .titImg2 {
+	width: 858px;
+	height: 98px;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	margin-left: -429px;
+	margin-top: 20px;
+	background-image: url('../images/pg2/pg2_tit3.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.pg2 .tit1{
+	width: 268px;
+	height: 62px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -134px;
+	margin-top: -44px;
+	background-image: url('../images/pg2/pg2_tit1.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.pg2 .tit2{
+	width: 716px;
+	height: 78px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -358px;
+	margin-top: 64px;
+	background-image: url('../images/pg2/pg2_tit2.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.pg2 .btn{
+	width: 130px;
+	height: 38px;
+	padding: 9px 14px;
+	border-color: #FFFFFF;
+	border-width: 2px;
+	border-style: solid;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	margin-left: -65px;
+	margin-bottom: 0px;
+	cursor: pointer;
+}
+.pg2 .btn_tit{
+	width: 100px;
+	height: 15px;
+	background-image: url('../images/pg2/btn_tit.png');
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.pg2 .btn.close .btn_tit{
+	background-position: 0px -15px;
 }
 .pg3 {
 	top: 0px;
 	left: 0px;
 	background-color: #000000;
 }
+.pg3 .tit {
+	width: 178px;
+	background-image: url('../images/pg3/pg3_tit.png');
+}
 .pg3 .bg {
 	background-image: url('../images/bg3.jpg');
+}
+.pg3 .centBox{
+	width: 700px;
+	height: 220px;
+	position: absolute;
+	top: 50%;
+	right: 0%;
+	margin-top: -110px;
+	margin-right: 6%;
+}
+.pg3 .titImg{
+	width: 479px;
+	height: 500px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -300px;
+	margin-left: -600px;
+	background-image: url('../images/pg3/pg3_img1.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.pg3 .tit1{
+	width: 338px;
+	height: 62px;
+	position : absolute;
+	top: 0px;
+	left: 0px;
+	margin-top: 0px;
+	margin-left: 30px;
+	background-image: url('../images/pg3/pg3_tit1.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.pg3 .tit2{
+	width: 700px;
+	height: 108px;
+	position : absolute;
+	bottom: 0px;
+	left: 0%;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	background-image: url('../images/pg3/pg3_tit2.png');
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 .pg4 {
 	top: 0px;

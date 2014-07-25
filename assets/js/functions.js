@@ -12,14 +12,14 @@
 			js.src = scriptSrc;
 			s.parentNode.insertBefore(js, s);
 		},
-		merge : function($obj1, $obj2) {
+		merge : function(obj) {
+			var len = obj.length;
 			var arr = [];
-			$obj1.each(function(i) {
-				arr.push(this);
-			});
-			$obj2.each(function(i) {
-				arr.push(this);
-			});
+			for (var i = 0; i < len; i++) {
+				obj[i].each(function(i) {
+					arr.push(this);
+				});
+			}
 			return $(arr);
 		}
 	};
@@ -80,14 +80,11 @@
 			$body.mousemove(function(e) {
 				$.each(_THIS.objList, function(i) {
 					var thisDom = $runobj.eq(i);
-					// 不科学的 分组 动画
-					if (thisDom.parents('.pg').hasClass('run')) {
-						var thisObj = _THIS.objList[i];
-						var thisCss = {};
-						thisCss = _THIS.getCss(e, thisObj);
-						//$runobj.eq(i).css(thisCss);
-						TweenMax.from(thisDom, 1, thisCss);
-					}
+					var thisObj = _THIS.objList[i];
+					var thisCss = {};
+					thisCss = _THIS.getCss(e, thisObj);
+					//$runobj.eq(i).css(thisCss);
+					TweenMax.from(thisDom, 1, thisCss);
 				});
 			});
 		}
@@ -189,125 +186,239 @@ var $objCache = {};
 	pgindex.max = $pgbox.size();
 
 	// 动画序列
-	pgindex.action = {
-		object : {
-			pg1cent1 : $('.pg1 .cent1'),
-			pg1cent2 : $('.pg1 .cent2'),
-			pg1tit : $('.pg1 .tit'),
-			pg2tit : $('.pg2 .tit')
+	pgindex.action = {};
+	pgindex.action.object = {
+		pg1tit : $('.pg1 .tit'),
+		pg1cent1 : $('.pg1 .cent1'),
+		pg1cent2 : $('.pg1 .cent2'),
+		pg2tit : $('.pg2 .tit'),
+		pg2titImg : $('.pg2 .titImg'),
+		pg2titImg2 : $('.pg2 .titImg2'),
+		pg2tit1 : $('.pg2 .tit1'),
+		pg2tit2 : $('.pg2 .tit2'),
+		pg2btn : $('.pg2 .btn'),
+		pg3tit : $('.pg3 .tit'),
+		pg3titImg : $('.pg3 .titImg'),
+		pg3tit1 : $('.pg3 .tit1'),
+		pg3tit2 : $('.pg3 .tit2'),
+	};
+	var domList = pgindex.action.object;
+	pgindex.action.thisInit = {
+		0 : function() {
+			domList.pg1cent1.css({
+				'left' : '-80px',
+				'opacity' : 0
+			});
+			domList.pg1cent2.css({
+				'left' : '80px',
+				'opacity' : 0
+			});
+			domList.pg1tit.css({
+				'marginTop' : '-20px',
+				'opacity' : 0
+			});
 		},
-		thisInit : {
-			0 : function() {
-				var domList = pgindex.action.object;
-				domList.pg1cent1.css({
-					'left' : '-80px',
-					'opacity' : 0
-				});
-				domList.pg1cent2.css({
-					'left' : '80px',
-					'opacity' : 0
-				});
-				domList.pg1tit.css({
-					'margin-top' : '-20px',
-					'opacity' : 0
-				});
-			},
-			1 : function() {
-				var domList = pgindex.action.object;
-				domList.pg2tit.css({
-					'margin-top' : '-20px',
-					'opacity' : 0
-				});
-			},
-			2 : function() {
-
-			},
-			3 : function() {
-
-			},
-			4 : function() {
-
-			},
-			5 : function() {
-
-			},
-			6 : function() {
-
-			}
+		1 : function() {
+			domList.pg2titImg.css({
+				'marginTop' : '30px',
+				'opacity' : 0
+			});
+			domList.pg2titImg2.css({
+				'marginTop' : '0px',
+				'opacity' : 0
+			});
+			domList.pg2tit1.css({
+				'marginLeft' : '-214px',
+				'opacity' : 0
+			});
+			domList.pg2tit2.css({
+				'marginLeft' : '-278px',
+				'opacity' : 0
+			});
+			domList.pg2btn.css({
+				'marginBottom' : '20px',
+				'opacity' : 0
+			});
+			domList.pg2tit.css({
+				'marginTop' : '-20px',
+				'opacity' : 0
+			});
 		},
-		thisIn : {
-			0 : function() {
-				var domList = pgindex.action.object;
-				TweenMax.to(domList.pg1cent1, 1, {
-					'left' : '0',
-					'opacity' : 1
-				});
-				TweenMax.to(domList.pg1cent2, 1, {
-					'left' : '0',
-					'opacity' : 1
-				});
-				TweenMax.to(domList.pg1tit, 1, {
-					'margin-top' : '0px',
-					'opacity' : 1
-				});
-			},
-			1 : function() {
-				var domList = pgindex.action.object;
-				TweenMax.to(domList.pg2tit, 1, {
-					'margin-top' : '0px',
-					'opacity' : 1
-				});
-			},
-			2 : function() {
-
-			},
-			3 : function() {
-
-			},
-			4 : function() {
-
-			},
-			5 : function() {
-
-			},
-			6 : function() {
-
-			}
+		2 : function() {
+			domList.pg3tit.css({
+				'marginTop' : '-20px',
+				'opacity' : 0
+			});
+			domList.pg3titImg.css({
+				'opacity' : 0
+			});
+			domList.pg3tit1.css({
+				'marginLeft' : '-50px',
+				'opacity' : 0
+			});
+			domList.pg3tit2.css({
+				'marginLeft' : '80px',
+				'opacity' : 0
+			});
 		},
-		thisOut : {
-			0 : function() {
-				var domList = pgindex.action.object;
-				var obj = pubfun.merge(domList.pg1cent1, domList.pg1cent2);
-				TweenMax.to(obj, 1, {
-					'opacity' : 0
-				});
-				TweenMax.to(domList.pg1tit, 1, {
-					'margin-top' : '20px',
-					'opacity' : 0
-				});
-			},
-			1 : function() {
-				var domList = pgindex.action.object;
-				TweenMax.to(domList.pg2tit, 1, {
-					'margin-top' : '20px',
-					'opacity' : 0
-				});
-			},
-			2 : function() {
+		3 : function() {
 
-			},
-			3 : function() {
+		},
+		4 : function() {
 
-			},
-			4 : function() {
+		},
+		5 : function() {
 
-			},
-			5 : function() {
+		},
+		6 : function() {
 
-			},
-			6 : function() {
+		}
+	};
+	pgindex.action.thisIn = {
+		0 : function() {
+			TweenMax.to(domList.pg1cent1, 1, {
+				'left' : '0',
+				'opacity' : 1
+			});
+			TweenMax.to(domList.pg1cent2, 1, {
+				'left' : '0',
+				'opacity' : 1
+			});
+			TweenMax.to(domList.pg1tit, 1, {
+				'marginTop' : '0px',
+				'opacity' : 1
+			});
+		},
+		1 : function() {
+			TweenMax.to(domList.pg2titImg, .5, {
+				'marginTop' : '0px',
+				'opacity' : 1
+			});
+			TweenMax.to(domList.pg2tit1, .5, {
+				'marginLeft' : '-134px',
+				'opacity' : 1
+			});
+			TweenMax.to(domList.pg2tit2, .5, {
+				'marginLeft' : '-358px',
+				'opacity' : 1,
+				onComplete : function() {
+					TweenMax.to(domList.pg2btn, .5, {
+						'marginBottom' : '0px',
+						'opacity' : 1
+					});
+				}
+			});
+			TweenMax.to(domList.pg2tit, 1, {
+				'marginTop' : '0px',
+				'opacity' : 1
+			});
+		},
+		2 : function() {
+			TweenMax.to(domList.pg3tit, 1, {
+				'marginTop' : '0px',
+				'opacity' : 1
+			});
+			TweenMax.to(domList.pg3titImg, 1, {
+				'opacity' : 1
+			});
+			TweenMax.to(domList.pg3tit1, 1, {
+				'marginLeft' : '30px',
+				'opacity' : 1
+			});
+			TweenMax.to(domList.pg3tit2, 1, {
+				'marginLeft' : '0px',
+				'opacity' : 1
+			});
+		},
+		3 : function() {
 
-			}
+		},
+		4 : function() {
+
+		},
+		5 : function() {
+
+		},
+		6 : function() {
+
+		}
+	};
+	pgindex.action.thisOut = {
+		0 : function() {
+			var uniteObj = pubfun.merge([domList.pg1cent1, domList.pg1cent2]);
+			TweenMax.to(uniteObj, 1, {
+				'opacity' : 0
+			});
+			TweenMax.to(domList.pg1tit, 1, {
+				'marginTop' : '20px',
+				'opacity' : 0
+			});
+		},
+		1 : function() {
+			var uniteObj = pubfun.merge([domList.pg2tit1, domList.pg2tit2, domList.pg2btn]);
+			//console.log(uniteObj);
+			TweenMax.to(uniteObj, 1, {
+				'opacity' : 0
+			});
+			TweenMax.to(domList.pg2titImg, 1, {
+				'marginTop' : '-30px',
+				'opacity' : 0
+			});
+			TweenMax.to(domList.pg2tit, 1, {
+				'marginTop' : '20px',
+				'opacity' : 0
+			});
+		},
+		2 : function() {
+			var uniteObj = pubfun.merge([domList.pg3titImg, domList.pg3tit1, domList.pg3tit2]);
+			TweenMax.to(uniteObj, 1, {
+				'opacity' : 0
+			});
+			TweenMax.to(domList.pg3tit, 1, {
+				'marginTop' : '20px',
+				'opacity' : 0
+			});
+		},
+		3 : function() {
+
+		},
+		4 : function() {
+
+		},
+		5 : function() {
+
+		},
+		6 : function() {
+
+		},
+	};
+	pgindex.action.pg2 = {
+		status : true,
+		openBtn : function() {
+			var domList = pgindex.action.object;
+			TweenMax.to(domList.pg2titImg, .5, {
+				'marginTop' : '-30px',
+				'opacity' : 0,
+				onComplete : function() {
+					TweenMax.to(domList.pg2titImg2, .5, {
+						'marginTop' : '20px',
+						'opacity' : 1
+					});
+				}
+			});
+		},
+		closeBtn : function() {
+			var domList = pgindex.action.object;
+			TweenMax.to(domList.pg2titImg2, .5, {
+				'marginTop' : '0px',
+				'opacity' : 0,
+				onComplete : function() {
+					TweenMax.to(domList.pg2titImg, .5, {
+						'marginTop' : '0px',
+						'opacity' : 1
+					});
+				}
+			});
 		}
 	};
 
@@ -327,11 +438,11 @@ var $objCache = {};
 		_THIS.action.thisOut[pgindex.thisIndex]();
 		$thisPg.css({
 			'left' : '0%',
-			'z-index' : '9'
+			'zIndex' : '9'
 		});
 		$nextPg.css({
 			'left' : '100%',
-			'z-index' : '10'
+			'zIndex' : '10'
 		});
 		TweenMax.to($nextPg, 1, {
 			'left' : '0%'
@@ -340,11 +451,11 @@ var $objCache = {};
 			'left' : '-25%',
 			onComplete : function() {
 				$nextPg.css({
-					'z-index' : '1'
+					'zIndex' : '1'
 				}).addClass('run');
 				$thisPg.css({
 					'left' : '-100%',
-					'z-index' : '0'
+					'zIndex' : '0'
 				}).removeClass('run');
 				pgindex.thisIndex = pgNext;
 				pgindex.lock = false;
@@ -369,11 +480,11 @@ var $objCache = {};
 		_THIS.action.thisOut[pgindex.thisIndex]();
 		$thisPg.css({
 			'left' : '0%',
-			'z-index' : '9'
+			'zIndex' : '9'
 		});
 		$nextPg.css({
 			'left' : '-100%',
-			'z-index' : '10'
+			'zIndex' : '10'
 		});
 		TweenMax.to($nextPg, 1, {
 			'left' : '0%',
@@ -382,12 +493,12 @@ var $objCache = {};
 			'left' : '25%',
 			onComplete : function() {
 				$nextPg.css({
-					'z-index' : '1'
+					'zIndex' : '1'
 				}).addClass('run');
 				;
 				$thisPg.css({
 					'left' : '100%',
-					'z-index' : '0'
+					'zIndex' : '0'
 				}).removeClass('run');
 				;
 				pgindex.thisIndex = pgNext;
@@ -405,6 +516,7 @@ var $objCache = {};
 			$pg.mainBox.height(pgH - 50);
 		},
 		domEvent : function() {
+			var _THIS = this;
 			// 点击 按钮 翻页
 			$pg.pgNext.click(function() {
 				pgindex.pgNext();
@@ -434,8 +546,23 @@ var $objCache = {};
 				}
 				//console.log(e.keyCode);
 			});
+
+			// pg2 点击按钮
+			$('.pg2 .btn').click(function() {
+				var _this = $(this);
+				if (pgindex.action.pg2.status) {
+					pgindex.action.pg2.openBtn();
+					pgindex.action.pg2.status = false;
+					_this.addClass('close');
+				} else {
+					pgindex.action.pg2.closeBtn();
+					pgindex.action.pg2.status = true;
+					_this.removeClass('close');
+				}
+			});
 		},
 		load : function() {
+
 		}
 	};
 })('puma', this);
