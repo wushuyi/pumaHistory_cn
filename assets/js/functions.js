@@ -86,13 +86,16 @@
 		run : function() {
 			var _THIS = this;
 			$body.mousemove(function(e) {
+				if (e.pageX % 4 && e.pageY % 4) {
+					return false;
+				}
 				$.each(_THIS.objList, function(i) {
 					var thisDom = _THIS.objList[i].thisElement;
 					var thisObj = _THIS.objList[i];
 					var thisCss = {};
 					thisCss = _THIS.getCss(e, thisObj);
 					//$runobj.eq(i).css(thisCss);
-					TweenMax.from(thisDom, 1, thisCss);
+					TweenMax.from(thisDom, 12, thisCss);
 				});
 			});
 		}
