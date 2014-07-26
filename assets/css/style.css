@@ -109,10 +109,10 @@ body, html {
 	cursor: pointer;
 }
 .btnav .prev {
-	background-image: url('https://www.puma.com/footballclub/assets/web/img/arsenal_history/nav.arr.left.svg');
+	background-image: url('../images/nav_left.png');
 }
 .btnav .next {
-	background-image: url('https://www.puma.com/footballclub/assets/web/img/arsenal_history/nav.arr.right.svg');
+	background-image: url('../images/nav_right.png');
 }
 .btnav .link {
 	height: 100%;
