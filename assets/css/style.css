@@ -108,6 +108,9 @@ body, html {
 	background-repeat: no-repeat;
 	cursor: pointer;
 }
+.btnav .arrow:hover{
+	background-color: #000000;
+}
 .btnav .prev {
 	background-image: url('../images/nav_left.png');
 }
@@ -119,6 +122,9 @@ body, html {
 	float: right;
 	border-left: solid 1px #000000;
 	cursor: pointer;
+}
+.btnav .link:hover{
+	background-color: #000000;
 }
 .link1 {
 	width: 80px;

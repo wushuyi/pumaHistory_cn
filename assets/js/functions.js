@@ -867,6 +867,7 @@ var $objCache = {};
 				loader.addImage(loadPath + loadList[i]);
 			}
 			loader.addCompletionListener(function(e) {
+				pgindex.action.thisInit[0]();
 				setTimeout(function() {
 					var uniteObj = pubfun.merge([$loadnumBox, $loadbt]);
 					uniteObj.hide();
@@ -874,6 +875,7 @@ var $objCache = {};
 						'opacity' : '0',
 						onComplete : function() {
 							$load.hide();
+							pgindex.action.thisIn[0]();
 						}
 					});
 				}, 500);
