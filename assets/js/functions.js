@@ -94,7 +94,6 @@
 					var thisObj = _THIS.objList[i];
 					var thisCss = {};
 					thisCss = _THIS.getCss(e, thisObj);
-					//$runobj.eq(i).css(thisCss);
 					TweenMax.from(thisDom, 12, thisCss);
 				});
 			});
@@ -202,23 +201,42 @@ var $objCache = {};
 	pgindex.action = {};
 	pgindex.action.object = {
 		pg1tit : $('.pg1 .tit'),
+		pg2tit : $('.pg2 .tit'),
+		pg3tit : $('.pg3 .tit'),
+		pg4tit : $('.pg4 .tit'),
+		pg5tit : $('.pg5 .tit'),
+		pg6tit : $('.pg6 .tit'),
+		pg7tit : $('.pg7 .tit'),
+
 		pg1cent1 : $('.pg1 .cent1'),
 		pg1cent2 : $('.pg1 .cent2'),
-		pg2tit : $('.pg2 .tit'),
+
 		pg2titImg : $('.pg2 .titImg'),
 		pg2titImg2 : $('.pg2 .titImg2'),
 		pg2tit1 : $('.pg2 .tit1'),
 		pg2tit2 : $('.pg2 .tit2'),
 		pg2btn : $('.pg2 .btn'),
-		pg3tit : $('.pg3 .tit'),
+
 		pg3titImg : $('.pg3 .titImg'),
 		pg3tit1 : $('.pg3 .tit1'),
 		pg3tit2 : $('.pg3 .tit2'),
-		pg7tit : $('.pg7 .tit'),
+
+		pg4cent1 : $('.pg4 .centBox1'),
+		pg4cent2 : $('.pg4 .centBox2'),
+		pg4tit1 : $('.pg4 .tit1'),
+		pg4tit2 : $('.pg4 .tit2'),
+		pg4swithBtn : $('.pg4 .swithBtn'),
+		pg4swithBtnX : $('.pg4 .swithBtnX'),
+		pg4bg1 : $('.pg4 .bg1 img'),
+		pg4bg2 : $('.pg4 .bg2 img'),
+		pg4bg3 : $('.pg4 .bg3 img'),
+		pg4bg4 : $('.pg4 .bg4 img'),
+
 		pg7cent : $('.pg7 .cent'),
 		pg7moveBtn : $('.pg7 .moveBtn'),
-		pg7popBox : $('.pg7 .popBox'),
-		pg7infoBox : $('.pg7 .infoBox')
+
+		popBox : $('.popBox'),
+		infoBox : $('.infoBox')
 	};
 	var domList = pgindex.action.object;
 	pgindex.action.thisInit = {
@@ -283,13 +301,30 @@ var $objCache = {};
 			});
 		},
 		3 : function() {
-
+			domList.pg4tit.css({
+				'marginTop' : '-20px',
+				'opacity' : 0
+			});
+			domList.pg4tit1.css({
+				'marginLeft' : '-70px',
+				'opacity' : 0
+			});
+			domList.pg4tit2.css({
+				'marginLeft' : '80px',
+				'opacity' : 0
+			});
 		},
 		4 : function() {
-
+			domList.pg5tit.css({
+				'marginTop' : '-20px',
+				'opacity' : 0
+			});
 		},
 		5 : function() {
-
+			domList.pg6tit.css({
+				'marginTop' : '-20px',
+				'opacity' : 0
+			});
 		},
 		6 : function() {
 			domList.pg7tit.css({
@@ -302,10 +337,10 @@ var $objCache = {};
 			domList.pg7moveBtn.css({
 				'left' : '100%'
 			});
-			domList.pg7infoBox.css({
+			domList.infoBox.css({
 				'width' : '0%'
 			});
-			var uniteObj = pubfun.merge([domList.pg7popBox, domList.pg7infoBox]);
+			var uniteObj = pubfun.merge([domList.popBox, domList.infoBox]);
 			uniteObj.css({
 				'display' : 'none'
 			});
@@ -368,13 +403,30 @@ var $objCache = {};
 			});
 		},
 		3 : function() {
-
+			TweenMax.to(domList.pg4tit, 1, {
+				'marginTop' : '0px',
+				'opacity' : 1
+			});
+			TweenMax.to(domList.pg4tit1, 1, {
+				'marginLeft' : '10px',
+				'opacity' : 1
+			});
+			TweenMax.to(domList.pg4tit2, 1, {
+				'marginLeft' : '00px',
+				'opacity' : 1
+			});
 		},
 		4 : function() {
-
+			TweenMax.to(domList.pg5tit, 1, {
+				'marginTop' : '0px',
+				'opacity' : 1
+			});
 		},
 		5 : function() {
-
+			TweenMax.to(domList.pg6tit, 1, {
+				'marginTop' : '0px',
+				'opacity' : 1
+			});
 		},
 		6 : function() {
 			TweenMax.to(domList.pg7tit, 1, {
@@ -427,13 +479,35 @@ var $objCache = {};
 			});
 		},
 		3 : function() {
-
+			TweenMax.to(domList.pg4tit, 1, {
+				'marginTop' : '20px',
+				'opacity' : 0
+			});
+			if (pgindex.action.pg4.status) {
+				pgindex.action.pg4.status = false;
+				pgindex.action.pg4.switchBoxReset();
+				return false;
+			}
+			TweenMax.to(domList.pg4tit1, 1, {
+				'marginLeft' : '-70px',
+				'opacity' : 0
+			});
+			TweenMax.to(domList.pg4tit2, 1, {
+				'marginLeft' : '80px',
+				'opacity' : 0
+			});
 		},
 		4 : function() {
-
+			TweenMax.to(domList.pg5tit, 1, {
+				'marginTop' : '20px',
+				'opacity' : 0
+			});
 		},
 		5 : function() {
-
+			TweenMax.to(domList.pg6tit, 1, {
+				'marginTop' : '20px',
+				'opacity' : 0
+			});
 		},
 		6 : function() {
 			TweenMax.to(domList.pg7tit, 1, {
@@ -441,6 +515,22 @@ var $objCache = {};
 				'opacity' : 0
 			});
 		},
+	};
+	pgindex.action.popInit = function() {
+		domList.popBox.css({
+			'display' : 'none'
+		});
+		domList.infoBox.css({
+			'width' : '0%',
+			'display' : 'none'
+
+		});
+		$('.titBox').css({
+			'right' : '0%'
+		});
+		$('.bg').css({
+			'left' : '0%'
+		});
 	};
 	pgindex.action.pg2 = {
 		status : true,
@@ -471,6 +561,95 @@ var $objCache = {};
 			});
 		}
 	};
+	pgindex.action.pg4 = {
+		status : false,
+		switchBox : function() {
+			pgindex.action.pg4.status = true;
+			domList.pg4cent2.css({
+				'display' : 'none',
+				'marginRight' : '80px',
+				'opacity' : '0'
+			});
+			domList.pg4swithBtnX.css({
+				'display' : 'none',
+				'marginLeft' : '-80px',
+				'opacity' : '0'
+			});
+			TweenMax.to(domList.pg4cent1, .5, {
+				'marginLeft' : '80px',
+				'opacity' : '0'
+			});
+			TweenMax.to(domList.pg4swithBtn, .5, {
+				'marginRight' : '-80px',
+				'opacity' : '0'
+			});
+			TweenMax.to(domList.pg4bg1, 1, {
+				'right' : '10%'
+			});
+			TweenMax.to(domList.pg4bg2, 1, {
+				'right' : '50%'
+			});
+			TweenMax.to(domList.pg4bg3, 1, {
+				'right' : '42%'
+			});
+			TweenMax.to(domList.pg4bg4, 1, {
+				'right' : '36%',
+				onComplete : function() {
+					TweenMax.to(domList.pg4cent2.show(), 1, {
+						'marginRight' : '0px',
+						'opacity' : '1'
+					});
+					TweenMax.to(domList.pg4swithBtnX.show(), 1, {
+						'marginLeft' : '0px',
+						'opacity' : '1'
+					});
+					wushuyi.setdata();
+				}
+			});
+		},
+		switchBoxReset : function() {
+			TweenMax.to(domList.pg4cent2, 1, {
+				'marginRight' : '-80px',
+				'opacity' : '0'
+			});
+			TweenMax.to(domList.pg4swithBtnX, .5, {
+				'marginLeft' : '80px',
+				'opacity' : '0',
+				onComplete : function() {
+					var uniteObj = pubfun.merge([domList.pg4cent2, domList.pg4swithBtnX]);
+					uniteObj.hide();
+					TweenMax.to(domList.pg4bg1, 1, {
+						'right' : '0%'
+					});
+					TweenMax.to(domList.pg4bg2, 1, {
+						'right' : '0%'
+					});
+					TweenMax.to(domList.pg4bg3, 1, {
+						'right' : '0%'
+					});
+					TweenMax.to(domList.pg4bg4, 1, {
+						'right' : '0%',
+						onComplete : function() {
+							TweenMax.to(domList.pg4cent1, .5, {
+								'marginLeft' : '0px',
+								'opacity' : '1'
+							});
+							TweenMax.to(domList.pg4swithBtn, .5, {
+								'marginRight' : '0px',
+								'opacity' : '1',
+								onComplete : function() {
+									if (pgindex.action.pg4.status = true) {
+										wushuyi.setdata();
+										pgindex.action.pg4.status = false;
+									}
+								}
+							});
+						}
+					});
+				}
+			});
+		}
+	};
 	pgindex.action.pg7 = {
 
 	};
@@ -481,6 +660,7 @@ var $objCache = {};
 			return false;
 		}
 		pgindex.lock = true;
+		_THIS.action.popInit();
 		var pgNext = pgindex.thisIndex + 1;
 		if (pgNext >= pgindex.max) {
 			pgNext = 0;
@@ -524,6 +704,7 @@ var $objCache = {};
 			return false;
 		}
 		pgindex.lock = true;
+		_THIS.action.popInit();
 		var pgNext = pgindex.thisIndex - 1;
 		if (pgNext < 0) {
 			pgNext = pgindex.max - 1;
@@ -616,6 +797,14 @@ var $objCache = {};
 				}
 			});
 
+			// pg4 按钮事件
+			domList.pg4swithBtn.click(function() {
+				pgindex.action.pg4.switchBox();
+			});
+			domList.pg4swithBtnX.click(function() {
+				pgindex.action.pg4.switchBoxReset();
+			});
+
 			// pg7 拖动
 			var $moveBtn = $('.moveBtn');
 			var $body = $('body');
@@ -638,37 +827,62 @@ var $objCache = {};
 			});
 
 			// pg7 按钮
-			$('.pg7 .btn1').click(function() {
-				domList.pg7popBox.show();
-				domList.pg7infoBox.show();
-				TweenMax.to($('.pg7 .bg'), .5, {
+			$('.openBtn').click(function() {
+				var cent = $(this).attr('opendata');
+				var centHtml = $(cent).html();
+				$('#popCent').html(centHtml);
+				$('.close , .popBox, .infoBox').show();
+				TweenMax.to($('.bg'), .5, {
 					'left' : '-25%'
 				});
-				TweenMax.to(domList.pg7infoBox, .5, {
+				TweenMax.to(domList.infoBox, .5, {
 					'width' : '50%'
 				});
 				TweenMax.to($('.titBox'), .5, {
 					'right' : '50%'
 				});
 			});
-			$('.pg7 .popBox').click(function() {
-				TweenMax.to($('.pg7 .bg'), .5, {
+			$('.popBox, .close').click(function() {
+				TweenMax.to($('.bg'), .5, {
 					'left' : '0%'
 				});
-				TweenMax.to(domList.pg7infoBox, .5, {
+				TweenMax.to(domList.infoBox, .5, {
 					'width' : '0%'
 				});
 				TweenMax.to($('.titBox'), .5, {
 					'right' : '0%',
 					onComplete : function() {
-						domList.pg7popBox.hide();
-						domList.pg7infoBox.hide();
+						$('.close , .popBox, .infoBox').hide();
 					}
 				});
 			});
 		},
-		load : function() {
+		loading : function() {
+			var progress, $loadbt = $('#loadingbt'), $load = $('#loading'), $loadNum = $('#loadNum');
+			var loadList = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg6.jpg', 'bg7.jpg', 'close.png', 'nav_left.png', 'nav_right.png', 'nav_tit.png', 'pg1_tit1.png', 'pg1_tit2.png', 'pg1_title.png', 'tit_icon.png', 'tit_icon_b.png', 'pg2/btn_tit.png', 'pg2/pg2_img1.png', 'pg2/pg2_tit.png', 'pg2/pg2_tit1.png', 'pg2/pg2_tit2.png', 'pg2/pg2_tit3.png', 'pg3/pg3_img1.png', 'pg3/pg3_tit.png', 'pg3/pg3_tit1.png', 'pg3/pg3_tit2.png', 'pg4/bg1.png', 'pg4/bg2.png', 'pg4/bg3.png', 'pg4/bg4.png', 'pg4/pg4_btn.png', 'pg4/pg4_tit.png', 'pg4/pg4_tit1.png', 'pg4/pg4_tit2.png', 'pg4/pg4_tit3.png', 'pg5/pg5_tit.png', 'pg6/cent1.png', 'pg6/cent2.png', 'pg6/cent3.png', 'pg6/pg6_img.png', 'pg6/pg6_tit.png', 'pg7/btn_icon.png', 'pg7/btn_icon2.png', 'pg7/cent1.png', 'pg7/cent2.png', 'pg7/pg7_tit.png', 'pg7/pg7_tit1.png', 'pg7/pg7_tit2.png'];
+			var loadPath = 'assets/images/';
+			var loadLength = loadList.length;
+			var loader = new PxLoader();
+			for (var i = 0; i < loadLength; i++) {
+				loader.addImage(loadPath + loadList[i]);
+			}
 
+			loader.addCompletionListener(function(e) {
+				TweenMax.to($load, 1, {
+					'opacity' : '0',
+					onComplete : function() {
+						$load.hide();
+					}
+				});
+			});
+			loader.addProgressListener(function(e) {
+				progress = e.completedCount / e.totalCount * 100 + '%';
+				$loadNum.html(progress);
+				$loadbt.css({
+					'width' : progress
+				});
+			});
+			loader.start();
 		}
 	};
 })('puma', this);
@@ -677,6 +891,7 @@ var $objCache = {};
 (function($) {
 
 	$(document).ready(function() {
+		puma.loading();
 		var initobj = {
 			win : $(window),
 			main : $('div.wrapper'),
@@ -685,17 +900,16 @@ var $objCache = {};
 			pg1 : $('div.pg1'),
 			pgPrev : $('div.prev'),
 			pgNext : $('div.next')
-		}
+		};
 		$.extend($objCache, initobj);
 		puma.pgsize();
 		puma.domEvent();
 		wushuyi.setings.thisElement = '.run .wu-parallax';
 		wushuyi.init();
-
 	});
 
 	$(window).load(function() {
-		puma.load();
+
 	});
 
 	$(window).resize(function() {

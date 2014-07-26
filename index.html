@@ -14,6 +14,37 @@
 		<meta name="Copyright" content="wangfan" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+		<style>
+			#loading {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				background-color: #141414;
+				z-index: 99999;
+				display: none;
+			}
+			#loadingbt {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background-color: #07A0E0;
+				width: 0%;
+				height: 12px;
+			}
+			#loadnumBox{
+				width: 80px;
+				height: 52px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -52px;
+				margin-left: -40px;
+				font-size: 40px;
+				color: #FFFFFF;
+				text-align: center;
+			}
+		</style>
+
 		<link rel="stylesheet" href="assets/css/reset.css" />
 		<link rel="stylesheet" href="assets/css/style.css" />
 		<script src="assets/js/libs/prefixfree-1.0.7.min.js"></script>
@@ -21,6 +52,14 @@
 	</head>
 
 	<body>
+		<div id="loading">
+			<div id="loadnumBox"><span id="loadNum">0</span></div>
+			<div id="loadingbt"></div>
+		</div>
+		<script>
+			var loading = document.getElementById('loading');
+			loading.style.display = 'block';
+		</script>
 		<div class="wrapper">
 			<div class="mainpg">
 				<div class="pg pg1 run" data-index='1'>
@@ -67,16 +106,29 @@
 
 				<div class="pg pg4" data-index='4'>
 					<div class="bg bg1 wu-parallax" wu-data="{'speed' : '0.02'}">
-						<img src="assets/images/bg4/bg2.png" />
+						<img src="assets/images/pg4/bg2.png" />
 					</div>
 					<div class="bg bg2 wu-parallax" wu-data="{'speed' : '0.03'}">
-						<img src="assets/images/bg4/bg1.png" />
+						<img src="assets/images/pg4/bg1.png" />
 					</div>
 					<div class="bg bg3 wu-parallax" wu-data="{'speed' : '0.04'}">
-						<img src="assets/images/bg4/bg4.png" />
+						<img src="assets/images/pg4/bg4.png" />
 					</div>
 					<div class="bg bg4 wu-parallax" wu-data="{'speed' : '0.04'}">
-						<img src="assets/images/bg4/bg3.png" />
+						<img src="assets/images/pg4/bg3.png" />
+					</div>
+					<div class="centBox1">
+						<div class="tit1"></div>
+						<div class="tit2"></div>
+					</div>
+					<div class="centBox2">
+						<div class="tit3"></div>
+					</div>
+					<div class="swithBtn"></div>
+					<div class="swithBtnX"></div>
+					<div class="titBox">
+						<div class="icon b"></div>
+						<div class="tit"></div>
 					</div>
 				</div>
 
@@ -107,16 +159,31 @@
 						<h2>在整个赛季保持不败战绩并非不可能。</h2>
 						<span>- 阿尔塞纳•温格</span>
 					</div>
+					<div class="titBox">
+						<div class="icon b"></div>
+						<div class="tit"></div>
+					</div>
 				</div>
 
 				<div class="pg pg6" data-index='6'>
-					<div class="bg wu-parallax" wu-data="{'speed' : '0.02'}"></div>
+					<div class="bg wu-parallax" wu-data="{'speed' : '0.02'}">
+						<div class="img wu-parallax" wu-data="{'speed' : '0.01'}">
+							<div class="openBtn btn1" opendata='#opbox_6_1'></div>
+							<div class="openBtn btn2" opendata='#opbox_6_2'></div>
+							<div class="openBtn btn3" opendata='#opbox_6_3'></div>
+						</div>
+					</div>
+
+					<div class="titBox">
+						<div class="icon b"></div>
+						<div class="tit"></div>
+					</div>
 				</div>
 
 				<div class="pg pg7" data-index='7'>
 					<div class="bg">
-						<div class="openBtn btn1 wu-parallax" wu-data="{'speed' : '0.02'}"></div>
-						<div class="openBtn btn2 wu-parallax" wu-data="{'speed' : '0.02'}"></div>
+						<div class="openBtn btn1 wu-parallax" opendata='#opbox_7_1' wu-data="{'speed' : '0.02'}"></div>
+						<div class="openBtn btn2 wu-parallax" opendata='#opbox_7_2' wu-data="{'speed' : '0.02'}"></div>
 						<div class="cent">
 							<div class="tit1"></div>
 							<div class="tit2"></div>
@@ -127,10 +194,21 @@
 						<div class="icon b"></div>
 						<div class="tit"></div>
 					</div>
-					<div class="popBox"></div>
-					<div class="infoBox"></div>
 				</div>
+				<div class="popBox"></div>
+				<div class="infoBox">
+					<div class="close"></div>
+					<div id="popCent" class="popCent">
 
+					</div>
+				</div>
+				<div id="opboxdata">
+					<span id="opbox_6_1"> <img src="assets/images/pg6/cent1.png" /> </span>
+					<span id="opbox_6_2"> <img src="assets/images/pg6/cent2.png" /> </span>
+					<span id="opbox_6_3"> <img src="assets/images/pg6/cent3.png" /> </span>
+					<span id="opbox_7_1"> <img src="assets/images/pg7/cent1.png" /> </span>
+					<span id="opbox_7_2"> <img src="assets/images/pg7/cent2.png" /> </span>
+				</div>
 			</div>
 			<div class="btnav">
 				<div class="arrow prev"></div>
@@ -146,6 +224,7 @@
 		<script src="assets/js/libs/jquery-1.11.1.min.js"></script>
 		<script src="assets/js/libs/jquery.mousewheel-3.1.11.min.js"></script>
 		<script src="assets/js/libs/TweenMax.min.js"></script>
+		<script src="assets/js/libs/PxLoader.js"></script>
 		<script src="assets/js/functions.js"></script>
 	</body>
 </html>
