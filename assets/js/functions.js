@@ -858,7 +858,7 @@ var $objCache = {};
 			});
 		},
 		loading : function() {
-			var progress, $loadbt = $('#loadingbt'), $load = $('#loading'), $loadNum = $('#loadNum');
+			var progress, $loadbt = $('#loadingbt'), $load = $('#loading'), $loadNum = $('#loadNum'), $loadnumBox = $('#loadnumBox');
 			var loadList = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg6.jpg', 'bg7.jpg', 'close.png', 'nav_left.png', 'nav_right.png', 'nav_tit.png', 'pg1_tit1.png', 'pg1_tit2.png', 'pg1_title.png', 'tit_icon.png', 'tit_icon_b.png', 'pg2/btn_tit.png', 'pg2/pg2_img1.png', 'pg2/pg2_tit.png', 'pg2/pg2_tit1.png', 'pg2/pg2_tit2.png', 'pg2/pg2_tit3.png', 'pg3/pg3_img1.png', 'pg3/pg3_tit.png', 'pg3/pg3_tit1.png', 'pg3/pg3_tit2.png', 'pg4/bg1.png', 'pg4/bg2.png', 'pg4/bg3.png', 'pg4/bg4.png', 'pg4/pg4_btn.png', 'pg4/pg4_tit.png', 'pg4/pg4_tit1.png', 'pg4/pg4_tit2.png', 'pg4/pg4_tit3.png', 'pg5/pg5_tit.png', 'pg6/cent1.png', 'pg6/cent2.png', 'pg6/cent3.png', 'pg6/pg6_img.png', 'pg6/pg6_tit.png', 'pg7/btn_icon.png', 'pg7/btn_icon2.png', 'pg7/cent1.png', 'pg7/cent2.png', 'pg7/pg7_tit.png', 'pg7/pg7_tit1.png', 'pg7/pg7_tit2.png'];
 			var loadPath = 'assets/images/';
 			var loadLength = loadList.length;
@@ -866,20 +866,23 @@ var $objCache = {};
 			for (var i = 0; i < loadLength; i++) {
 				loader.addImage(loadPath + loadList[i]);
 			}
-
 			loader.addCompletionListener(function(e) {
-				TweenMax.to($load, 1, {
-					'opacity' : '0',
-					onComplete : function() {
-						$load.hide();
-					}
-				});
+				setTimeout(function() {
+					var uniteObj = pubfun.merge([$loadnumBox, $loadbt]);
+					uniteObj.hide();
+					TweenMax.to($load, 1, {
+						'opacity' : '0',
+						onComplete : function() {
+							$load.hide();
+						}
+					});
+				}, 500);
 			});
 			loader.addProgressListener(function(e) {
-				progress = e.completedCount / e.totalCount * 100 + '%';
+				progress = parseInt(e.completedCount / e.totalCount * 100);
 				$loadNum.html(progress);
 				$loadbt.css({
-					'width' : progress
+					'width' : progress + '%'
 				});
 			});
 			loader.start();
