@@ -488,7 +488,7 @@ body, html {
 	position: absolute;
 	bottom: 60%;
 	left: 26%;
-	background-image: url('../images/pg4/pg4_btn.png');
+	background-image: url('../images/pg4/pg4_btnX.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	cursor: pointer;
@@ -552,6 +552,7 @@ body, html {
 	left: 67%;
 	border-left: 1px solid black;
 }
+
 .pg5 h2 {
 	display: block;
 	width: 320px;
@@ -584,6 +585,15 @@ body, html {
 }
 .pg5 .msgBox:hover span {
 	color: #FFFFFF;
+}
+.pg5 .b{
+	display: none;
+}
+.pg5 .msgBox:hover .b{
+	display: block;
+}
+.pg5 .msgBox:hover .w{
+	display: none;
 }
 
 .pg6 {

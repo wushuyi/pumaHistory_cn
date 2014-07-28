@@ -30,7 +30,10 @@
 				});
 			}
 			return $(arr);
-		}
+		},
+		isLowIE : (function(){
+			return $('html').hasClass('ie-lt9');
+		})()
 	};
 })('pubfun', this);
 
@@ -283,11 +286,15 @@ var $objCache = {};
 			});
 		},
 		2 : function() {
+			if(pubfun.isLowIE){
+				domList.pg3titImg.hide();
+			}else{
+				domList.pg3titImg.css({
+					'display' : 'none'
+				});
+			}
 			domList.pg3tit.css({
 				'marginTop' : '-20px',
-				'opacity' : 0
-			});
-			domList.pg3titImg.css({
 				'opacity' : 0
 			});
 			domList.pg3tit1.css({
@@ -386,11 +393,15 @@ var $objCache = {};
 			});
 		},
 		2 : function() {
+			if(pubfun.isLowIE){
+				domList.pg3titImg.show();
+			}else{
+				TweenMax.to(domList.pg3titImg, 1, {
+					'opacity' : 1
+				});
+			}
 			TweenMax.to(domList.pg3tit, 1, {
 				'marginTop' : '0px',
-				'opacity' : 1
-			});
-			TweenMax.to(domList.pg3titImg, 1, {
 				'opacity' : 1
 			});
 			TweenMax.to(domList.pg3tit1, 1, {
@@ -469,7 +480,15 @@ var $objCache = {};
 			});
 		},
 		2 : function() {
-			var uniteObj = pubfun.merge([domList.pg3titImg, domList.pg3tit1, domList.pg3tit2]);
+			domList.pg3titImg
+			if(pubfun.isLowIE){
+				domList.pg3titImg.hide();
+			}else{
+				TweenMax.to(domList.pg3titImg, 1, {
+					'opacity' : 0
+				});
+			}
+			var uniteObj = pubfun.merge([domList.pg3tit1, domList.pg3tit2]);
 			TweenMax.to(uniteObj, 1, {
 				'opacity' : 0
 			});
@@ -575,10 +594,15 @@ var $objCache = {};
 				'marginLeft' : '-80px',
 				'opacity' : 0
 			});
-			TweenMax.to(domList.pg4cent1, .5, {
-				'marginLeft' : '80px',
-				'opacity' : 0
-			});
+			if(pubfun.isLowIE){
+				domList.pg4cent1.hide();
+			}else{
+				TweenMax.to(domList.pg4cent1, .5, {
+					'marginLeft' : '80px',
+					'opacity' : 0
+				});
+			}
+			
 			TweenMax.to(domList.pg4swithBtn, .5, {
 				'marginRight' : '-80px',
 				'opacity' : 0
@@ -630,10 +654,14 @@ var $objCache = {};
 					TweenMax.to(domList.pg4bg4, 1, {
 						'right' : '0%',
 						onComplete : function() {
-							TweenMax.to(domList.pg4cent1, .5, {
-								'marginLeft' : '0px',
-								'opacity' : '1'
-							});
+							if(pubfun.isLowIE){
+								domList.pg4cent1.show();
+							}else{
+								TweenMax.to(domList.pg4cent1, .5, {
+									'marginLeft' : '0px',
+									'opacity' : '1'
+								});
+							}
 							TweenMax.to(domList.pg4swithBtn, .5, {
 								'marginRight' : '0px',
 								'opacity' : '1',
@@ -856,19 +884,19 @@ var $objCache = {};
 					}
 				});
 			});
-			$('.pg6 .btn1').click(function(){
+			$('.pg6 .btn1').mouseover(function(){
 				domList.pg6img.attr('class', 'img img_1');
 			});
-			$('.pg6 .btn2').click(function(){
+			$('.pg6 .btn2').mouseover(function(){
 				domList.pg6img.attr('class', 'img img_2');
 			});
-			$('.pg6 .btn3').click(function(){
+			$('.pg6 .btn3').mouseover(function(){
 				domList.pg6img.attr('class', 'img img_3');
 			});
 		},
 		loading : function() {
 			var progress, $loadbt = $('#loadingbt'), $load = $('#loading'), $loadNum = $('#loadNum'), $loadnumBox = $('#loadnumBox');
-			var loadList = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg6.jpg', 'bg7.jpg', 'close.png', 'nav_left.png', 'nav_right.png', 'nav_tit.png', 'pg1_tit1.png', 'pg1_tit2.png', 'pg1_title.png', 'tit_icon.png', 'tit_icon_b.png', 'pg2/btn_tit.png', 'pg2/pg2_img1.png', 'pg2/pg2_tit.png', 'pg2/pg2_tit1.png', 'pg2/pg2_tit2.png', 'pg2/pg2_tit3.png', 'pg3/pg3_img1.png', 'pg3/pg3_tit.png', 'pg3/pg3_tit1.png', 'pg3/pg3_tit2.png', 'pg4/bg1.png', 'pg4/bg2.png', 'pg4/bg3.png', 'pg4/bg4.png', 'pg4/pg4_btn.png', 'pg4/pg4_tit.png', 'pg4/pg4_tit1.png', 'pg4/pg4_tit2.png', 'pg4/pg4_tit3.png', 'pg5/pg5_tit.png', 'pg6/cent1.png', 'pg6/cent2.png', 'pg6/cent3.png', 'pg6/pg6_img.png', 'pg6/pg6_img_1.png', 'pg6/pg6_img_2.png', 'pg6/pg6_img_3.png', 'pg6/pg6_btn_hover.png','pg6/pg6_tit.png', 'pg7/btn_icon.png', 'pg7/btn_icon2.png', 'pg7/cent1.png', 'pg7/cent2.png', 'pg7/pg7_tit.png', 'pg7/pg7_tit1.png', 'pg7/pg7_tit2.png'];
+			var loadList = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg6.jpg', 'bg7.jpg', 'close.png', 'nav_left.png', 'nav_right.png', 'nav_tit.png', 'pg1_tit1.png', 'pg1_tit2.png', 'pg1_title.png', 'tit_icon.png', 'tit_icon_b.png', 'pg2/btn_tit.png', 'pg2/pg2_img1.png', 'pg2/pg2_tit.png', 'pg2/pg2_tit1.png', 'pg2/pg2_tit2.png', 'pg2/pg2_tit3.png', 'pg3/pg3_img1.png', 'pg3/pg3_tit.png', 'pg3/pg3_tit1.png', 'pg3/pg3_tit2.png', 'pg4/bg1.png', 'pg4/bg2.png', 'pg4/bg3.png', 'pg4/bg4.png', 'pg4/pg4_btn.png', 'pg4/pg4_btnX.png','pg4/pg4_tit.png', 'pg4/pg4_tit1.png', 'pg4/pg4_tit2.png', 'pg4/pg4_tit3.png', 'pg5/pg5_tit.png', 'pg5/p1.png', 'pg5/p2.png','pg5/p3.png','pg5/p4.png','pg5/p5.png','pg5/p6.png','pg5/ph1.png', 'pg5/ph2.png','pg5/ph3.png','pg5/ph4.png','pg5/ph5.png','pg5/ph6.png','pg6/cent1.png', 'pg6/cent2.png', 'pg6/cent3.png', 'pg6/pg6_img.png', 'pg6/pg6_img_1.png', 'pg6/pg6_img_2.png', 'pg6/pg6_img_3.png', 'pg6/pg6_btn_hover.png','pg6/pg6_tit.png', 'pg7/btn_icon.png', 'pg7/btn_icon2.png', 'pg7/cent1.png', 'pg7/cent2.png', 'pg7/pg7_tit.png', 'pg7/pg7_tit1.png', 'pg7/pg7_tit2.png'];
 			var loadPath = 'assets/images/';
 			var loadLength = loadList.length;
 			var loader = new PxLoader();
