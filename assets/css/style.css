@@ -191,7 +191,7 @@ body, html {
 	top: 0px;
 	left: 0px;
 	z-index: 1;
-	background-color: #000000;
+	background-color: #202020;
 }
 .pg1 .bg {
 	background-image: url('../images/bg1.jpg');
@@ -230,7 +230,7 @@ body, html {
 .pg2 {
 	top: 0px;
 	left: 0px;
-	background-color: #000000;
+	background-color: #202020;
 }
 .pg2 .tit {
 	width: 178px;
@@ -322,7 +322,7 @@ body, html {
 .pg3 {
 	top: 0px;
 	left: 0px;
-	background-color: #000000;
+	background-color: #F9E642;
 }
 .pg3 .tit {
 	width: 178px;
@@ -379,7 +379,7 @@ body, html {
 .pg4 {
 	top: 0px;
 	left: 0px;
-	background-color: #000000;
+	background-color: #FFFFFF;
 }
 .pg4 .tit {
 	width: 178px;
