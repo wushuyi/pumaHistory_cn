@@ -947,7 +947,7 @@ var $objCache = {};
 		puma.pgsize();
 		puma.domEvent();
 		wushuyi.setings.thisElement = '.run .wu-parallax';
-		//wushuyi.init();
+		wushuyi.init();
 	});
 
 	$(window).load(function() {
