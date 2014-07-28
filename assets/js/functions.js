@@ -231,6 +231,8 @@ var $objCache = {};
 		pg4bg2 : $('.pg4 .bg2 img'),
 		pg4bg3 : $('.pg4 .bg3 img'),
 		pg4bg4 : $('.pg4 .bg4 img'),
+		
+		pg6img : $('.pg6 .img'),
 
 		pg7cent : $('.pg7 .cent'),
 		pg7moveBtn : $('.pg7 .moveBtn'),
@@ -296,9 +298,6 @@ var $objCache = {};
 				'marginLeft' : '80px',
 				'opacity' : 0
 			});
-			domList.pg3titImg.css({
-				'left' : '100%'
-			});
 		},
 		3 : function() {
 			domList.pg4tit.css({
@@ -325,6 +324,7 @@ var $objCache = {};
 				'marginTop' : '-20px',
 				'opacity' : 0
 			});
+			domList.pg6img.attr('class', 'img');
 		},
 		6 : function() {
 			domList.pg7tit.css({
@@ -568,20 +568,20 @@ var $objCache = {};
 			domList.pg4cent2.css({
 				'display' : 'none',
 				'marginRight' : '80px',
-				'opacity' : '0'
+				'opacity' : 0
 			});
 			domList.pg4swithBtnX.css({
 				'display' : 'none',
 				'marginLeft' : '-80px',
-				'opacity' : '0'
+				'opacity' : 0
 			});
 			TweenMax.to(domList.pg4cent1, .5, {
 				'marginLeft' : '80px',
-				'opacity' : '0'
+				'opacity' : 0
 			});
 			TweenMax.to(domList.pg4swithBtn, .5, {
 				'marginRight' : '-80px',
-				'opacity' : '0'
+				'opacity' : 0
 			});
 			TweenMax.to(domList.pg4bg1, 1, {
 				'right' : '10%'
@@ -610,11 +610,11 @@ var $objCache = {};
 		switchBoxReset : function() {
 			TweenMax.to(domList.pg4cent2, 1, {
 				'marginRight' : '-80px',
-				'opacity' : '0'
+				'opacity' : 0
 			});
 			TweenMax.to(domList.pg4swithBtnX, .5, {
 				'marginLeft' : '80px',
-				'opacity' : '0',
+				'opacity' : 0,
 				onComplete : function() {
 					var uniteObj = pubfun.merge([domList.pg4cent2, domList.pg4swithBtnX]);
 					uniteObj.hide();
@@ -856,10 +856,19 @@ var $objCache = {};
 					}
 				});
 			});
+			$('.pg6 .btn1').click(function(){
+				domList.pg6img.attr('class', 'img img_1');
+			});
+			$('.pg6 .btn2').click(function(){
+				domList.pg6img.attr('class', 'img img_2');
+			});
+			$('.pg6 .btn3').click(function(){
+				domList.pg6img.attr('class', 'img img_3');
+			});
 		},
 		loading : function() {
 			var progress, $loadbt = $('#loadingbt'), $load = $('#loading'), $loadNum = $('#loadNum'), $loadnumBox = $('#loadnumBox');
-			var loadList = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg6.jpg', 'bg7.jpg', 'close.png', 'nav_left.png', 'nav_right.png', 'nav_tit.png', 'pg1_tit1.png', 'pg1_tit2.png', 'pg1_title.png', 'tit_icon.png', 'tit_icon_b.png', 'pg2/btn_tit.png', 'pg2/pg2_img1.png', 'pg2/pg2_tit.png', 'pg2/pg2_tit1.png', 'pg2/pg2_tit2.png', 'pg2/pg2_tit3.png', 'pg3/pg3_img1.png', 'pg3/pg3_tit.png', 'pg3/pg3_tit1.png', 'pg3/pg3_tit2.png', 'pg4/bg1.png', 'pg4/bg2.png', 'pg4/bg3.png', 'pg4/bg4.png', 'pg4/pg4_btn.png', 'pg4/pg4_tit.png', 'pg4/pg4_tit1.png', 'pg4/pg4_tit2.png', 'pg4/pg4_tit3.png', 'pg5/pg5_tit.png', 'pg6/cent1.png', 'pg6/cent2.png', 'pg6/cent3.png', 'pg6/pg6_img.png', 'pg6/pg6_tit.png', 'pg7/btn_icon.png', 'pg7/btn_icon2.png', 'pg7/cent1.png', 'pg7/cent2.png', 'pg7/pg7_tit.png', 'pg7/pg7_tit1.png', 'pg7/pg7_tit2.png'];
+			var loadList = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg6.jpg', 'bg7.jpg', 'close.png', 'nav_left.png', 'nav_right.png', 'nav_tit.png', 'pg1_tit1.png', 'pg1_tit2.png', 'pg1_title.png', 'tit_icon.png', 'tit_icon_b.png', 'pg2/btn_tit.png', 'pg2/pg2_img1.png', 'pg2/pg2_tit.png', 'pg2/pg2_tit1.png', 'pg2/pg2_tit2.png', 'pg2/pg2_tit3.png', 'pg3/pg3_img1.png', 'pg3/pg3_tit.png', 'pg3/pg3_tit1.png', 'pg3/pg3_tit2.png', 'pg4/bg1.png', 'pg4/bg2.png', 'pg4/bg3.png', 'pg4/bg4.png', 'pg4/pg4_btn.png', 'pg4/pg4_tit.png', 'pg4/pg4_tit1.png', 'pg4/pg4_tit2.png', 'pg4/pg4_tit3.png', 'pg5/pg5_tit.png', 'pg6/cent1.png', 'pg6/cent2.png', 'pg6/cent3.png', 'pg6/pg6_img.png', 'pg6/pg6_img_1.png', 'pg6/pg6_img_2.png', 'pg6/pg6_img_3.png', 'pg6/pg6_btn_hover.png','pg6/pg6_tit.png', 'pg7/btn_icon.png', 'pg7/btn_icon2.png', 'pg7/cent1.png', 'pg7/cent2.png', 'pg7/pg7_tit.png', 'pg7/pg7_tit1.png', 'pg7/pg7_tit2.png'];
 			var loadPath = 'assets/images/';
 			var loadLength = loadList.length;
 			var loader = new PxLoader();
@@ -872,7 +881,7 @@ var $objCache = {};
 					var uniteObj = pubfun.merge([$loadnumBox, $loadbt]);
 					uniteObj.hide();
 					TweenMax.to($load, 1, {
-						'opacity' : '0',
+						'opacity' : 0,
 						onComplete : function() {
 							$load.hide();
 							pgindex.action.thisIn[0]();
@@ -910,7 +919,7 @@ var $objCache = {};
 		puma.pgsize();
 		puma.domEvent();
 		wushuyi.setings.thisElement = '.run .wu-parallax';
-		wushuyi.init();
+		//wushuyi.init();
 	});
 
 	$(window).load(function() {
