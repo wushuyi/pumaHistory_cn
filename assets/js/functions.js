@@ -817,11 +817,11 @@ var $objCache = {};
 				if (pgindex.action.pg2.status) {
 					pgindex.action.pg2.openBtn();
 					pgindex.action.pg2.status = false;
-					_this.addClass('close');
+					_this.addClass('X');
 				} else {
 					pgindex.action.pg2.closeBtn();
 					pgindex.action.pg2.status = true;
-					_this.removeClass('close');
+					_this.removeClass('X');
 				}
 			});
 
