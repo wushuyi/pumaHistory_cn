@@ -258,6 +258,7 @@ var $objCache = {};
 				'marginTop' : '-20px',
 				'opacity' : 0
 			});
+			_gaq.push(['_trackEvent', 'click', '页面切换', '页面切换-1']);
 		},
 		1 : function() {
 			domList.pg2titImg.css({
@@ -284,6 +285,7 @@ var $objCache = {};
 				'marginTop' : '-20px',
 				'opacity' : 0
 			});
+			_gaq.push(['_trackEvent', 'click', '页面切换', '页面切换-2']);
 		},
 		2 : function() {
 			if(pubfun.isLowIE){
@@ -305,6 +307,7 @@ var $objCache = {};
 				'marginLeft' : '80px',
 				'opacity' : 0
 			});
+			_gaq.push(['_trackEvent', 'click', '页面切换', '页面切换-3']);
 		},
 		3 : function() {
 			domList.pg4tit.css({
@@ -319,12 +322,14 @@ var $objCache = {};
 				'marginLeft' : '80px',
 				'opacity' : 0
 			});
+			_gaq.push(['_trackEvent', 'click', '页面切换', '页面切换-4']);
 		},
 		4 : function() {
 			domList.pg5tit.css({
 				'marginTop' : '-20px',
 				'opacity' : 0
 			});
+			_gaq.push(['_trackEvent', 'click', '页面切换', '页面切换-5']);
 		},
 		5 : function() {
 			domList.pg6tit.css({
@@ -332,6 +337,7 @@ var $objCache = {};
 				'opacity' : 0
 			});
 			domList.pg6img.attr('class', 'img');
+			_gaq.push(['_trackEvent', 'click', '页面切换', '页面切换-6']);
 		},
 		6 : function() {
 			domList.pg7tit.css({
@@ -351,6 +357,7 @@ var $objCache = {};
 			uniteObj.css({
 				'display' : 'none'
 			});
+			_gaq.push(['_trackEvent', 'click', '页面切换', '页面切换-7']);
 		}
 	};
 	pgindex.action.thisIn = {
@@ -724,7 +731,7 @@ var $objCache = {};
 				wushuyi.setdata();
 			}
 		});
-
+		
 	};
 	pgindex.pgPrev = function() {
 		var _THIS = this;
@@ -773,7 +780,6 @@ var $objCache = {};
 	};
 
 	constructor[puma] = {
-		test : pgindex,
 		pgsize : function() {
 			var pgH = $pg.win.height();
 			$pg.main.height(pgH);
@@ -818,19 +824,34 @@ var $objCache = {};
 					pgindex.action.pg2.openBtn();
 					pgindex.action.pg2.status = false;
 					_this.addClass('X');
+					_gaq.push(['_trackEvent', 'click', '页面二', '页面二-揭晓最终比分']);
 				} else {
 					pgindex.action.pg2.closeBtn();
 					pgindex.action.pg2.status = true;
 					_this.removeClass('X');
+					_gaq.push(['_trackEvent', 'click', '页面二', '页面二-关闭最终比分']);
 				}
 			});
 
 			// pg4 按钮事件
 			domList.pg4swithBtn.click(function() {
 				pgindex.action.pg4.switchBox();
+				_gaq.push(['_trackEvent', 'click', '页面四', '页面四-查看更多']);
 			});
 			domList.pg4swithBtnX.click(function() {
 				pgindex.action.pg4.switchBoxReset();
+				_gaq.push(['_trackEvent', 'click', '页面四', '页面四-关闭查看更多']);
+			});
+			
+			// pg6 按钮
+			$('.pg6 .btn1').mouseover(function(){
+				domList.pg6img.attr('class', 'img img_1');
+			});
+			$('.pg6 .btn2').mouseover(function(){
+				domList.pg6img.attr('class', 'img img_2');
+			});
+			$('.pg6 .btn3').mouseover(function(){
+				domList.pg6img.attr('class', 'img img_3');
 			});
 
 			// pg7 拖动
@@ -853,8 +874,10 @@ var $objCache = {};
 			$body.mouseup(function() {
 				pg7lock = false;
 			});
-
-			// pg7 按钮
+			
+			
+			// 更多信息 按钮
+			var thisBtnName;
 			$('.openBtn').click(function() {
 				var cent = $(this).attr('opendata');
 				var centHtml = $(cent).html();
@@ -869,6 +892,8 @@ var $objCache = {};
 				TweenMax.to($('.titBox'), .5, {
 					'right' : '50%'
 				});
+				thisBtnName = cent;
+				_gaq.push(['_trackEvent', 'click', '查看更多按钮', '查看更多按钮-打开-']+cent);
 			});
 			$('.popBox, .close').click(function() {
 				TweenMax.to($('.bg'), .5, {
@@ -883,15 +908,7 @@ var $objCache = {};
 						$('.close , .popBox, .infoBox').hide();
 					}
 				});
-			});
-			$('.pg6 .btn1').mouseover(function(){
-				domList.pg6img.attr('class', 'img img_1');
-			});
-			$('.pg6 .btn2').mouseover(function(){
-				domList.pg6img.attr('class', 'img img_2');
-			});
-			$('.pg6 .btn3').mouseover(function(){
-				domList.pg6img.attr('class', 'img img_3');
+				_gaq.push(['_trackEvent', 'click', '查看更多按钮', '查看更多按钮-关闭-']+thisBtnName);
 			});
 		},
 		loading : function() {
@@ -948,6 +965,15 @@ var $objCache = {};
 		puma.domEvent();
 		wushuyi.setings.thisElement = '.run .wu-parallax';
 		wushuyi.init();
+		
+		
+		/* ga 统计 */
+		$('.btnav .link1').click(function(){
+			_gaq.push(['_trackEvent', 'click', '底部导航', '首页']);
+		});
+		$('.btnav .link2').click(function(){
+			_gaq.push(['_trackEvent', 'click', '底部导航', '阿森纳系列']);
+		});
 	});
 
 	$(window).load(function() {
@@ -960,3 +986,21 @@ var $objCache = {};
 	});
 
 })(window.jQuery);
+
+var _gaq = _gaq || [];
+var _pathName = location.pathname  
+_gaq.push(['_setAccount', 'UA-5629710-20']); 
+var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+_gaq.push(['_setDomainName', "puma.com.cn"]);
+_gaq.push(['_trackPageview']);
+
+/* google 统计 */
+(function(){
+	var ga = document.createElement('script');
+	ga.type = 'text/javascript';
+	ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; 
+	s.parentNode.insertBefore(ga, s);
+})();
