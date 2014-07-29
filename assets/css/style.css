@@ -586,13 +586,13 @@ body, html {
 .pg5 .msgBox:hover span {
 	color: #FFFFFF;
 }
-.pg5 .b{
+.pg5 .black{
 	display: none;
 }
-.pg5 .msgBox:hover .b{
+.pg5 .msgBox:hover .black{
 	display: block;
 }
-.pg5 .msgBox:hover .w{
+.pg5 .msgBox:hover .white{
 	display: none;
 }
 

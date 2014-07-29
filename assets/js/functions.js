@@ -445,10 +445,10 @@ var $objCache = {};
 				'opacity' : 1
 			});
 			TweenMax.to(domList.pg7cent, 1, {
-				'width' : '39%',
+				'width' : '50%',
 			});
 			TweenMax.to(domList.pg7moveBtn, 1, {
-				'left' : '39%',
+				'left' : '50%',
 			});
 
 		}
