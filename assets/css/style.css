@@ -55,6 +55,54 @@ textarea:-moz-placeholder {
 	color: #a9a9a9;
 }
 
+
+/* loading */
+#loadNum div{
+	width: 22px;
+	height: 30px;
+	background-image: url("../images/num.png");
+	background-repeat: no-repeat;
+	float: left;
+}
+#loadNum .num1{
+	background-position: 0px -1px;
+}
+#loadNum .num2{
+	background-position: -22px -1px;
+}
+#loadNum .num3{
+	background-position: -43px -1px;
+}
+#loadNum .num4{
+	background-position: -66px -1px;
+}
+#loadNum .num5{
+	background-position: -87px -1px;
+}
+#loadNum .num6{
+	background-position: -109px -1px;
+}
+#loadNum .num7{
+	background-position: -131px -1px;
+}
+#loadNum .num8{
+	background-position: -152px -1px;
+}
+#loadNum .num9{
+	background-position: -174px -1px;
+}
+#loadNum .num0{
+	background-position: -196px -1px;
+}
+#loadnumBox .bfb{
+	width: 26px;
+	height: 30px;
+	background-image: url("../images/num.png");
+	background-repeat: no-repeat;
+	background-position: -220px -1px;
+	float: left;
+}
+
 /* postion */
 .absolute {
 	position: absolute;

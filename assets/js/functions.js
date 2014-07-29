@@ -780,6 +780,7 @@ var $objCache = {};
 	};
 
 	constructor[puma] = {
+		loadPath : 'assets/images/',
 		pgsize : function() {
 			var pgH = $pg.win.height();
 			$pg.main.height(pgH);
@@ -912,13 +913,13 @@ var $objCache = {};
 			});
 		},
 		loading : function() {
+			var _THIS = this;
 			var progress, $loadbt = $('#loadingbt'), $load = $('#loading'), $loadNum = $('#loadNum'), $loadnumBox = $('#loadnumBox');
 			var loadList = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg6.jpg', 'bg7.jpg', 'close.png', 'nav_left.png', 'nav_right.png', 'nav_tit.png', 'pg1_tit1.png', 'pg1_tit2.png', 'pg1_title.png', 'tit_icon.png', 'tit_icon_b.png', 'pg2/btn_tit.png', 'pg2/pg2_img1.png', 'pg2/pg2_tit.png', 'pg2/pg2_tit1.png', 'pg2/pg2_tit2.png', 'pg2/pg2_tit3.png', 'pg3/pg3_img1.png', 'pg3/pg3_tit.png', 'pg3/pg3_tit1.png', 'pg3/pg3_tit2.png', 'pg4/bg1.png', 'pg4/bg2.png', 'pg4/bg3.png', 'pg4/bg4.png', 'pg4/pg4_btn.png', 'pg4/pg4_btnX.png','pg4/pg4_tit.png', 'pg4/pg4_tit1.png', 'pg4/pg4_tit2.png', 'pg4/pg4_tit3.png', 'pg5/pg5_tit.png', 'pg5/p1.png', 'pg5/p2.png','pg5/p3.png','pg5/p4.png','pg5/p5.png','pg5/p6.png','pg5/ph1.png', 'pg5/ph2.png','pg5/ph3.png','pg5/ph4.png','pg5/ph5.png','pg5/ph6.png','pg6/cent1.png', 'pg6/cent2.png', 'pg6/cent3.png', 'pg6/pg6_img.png', 'pg6/pg6_img_1.png', 'pg6/pg6_img_2.png', 'pg6/pg6_img_3.png', 'pg6/pg6_btn_hover.png','pg6/pg6_tit.png', 'pg7/btn_icon.png', 'pg7/btn_icon2.png', 'pg7/cent1.png', 'pg7/cent2.png', 'pg7/pg7_tit.png', 'pg7/pg7_tit1.png', 'pg7/pg7_tit2.png'];
-			var loadPath = 'assets/images/';
 			var loadLength = loadList.length;
 			var loader = new PxLoader();
 			for (var i = 0; i < loadLength; i++) {
-				loader.addImage(loadPath + loadList[i]);
+				loader.addImage(_THIS.loadPath + loadList[i]);
 			}
 			loader.addCompletionListener(function(e) {
 				pgindex.action.thisInit[0]();
@@ -936,10 +937,17 @@ var $objCache = {};
 			});
 			loader.addProgressListener(function(e) {
 				progress = parseInt(e.completedCount / e.totalCount * 100);
-				$loadNum.html(progress);
 				$loadbt.css({
 					'width' : progress + '%'
 				});
+				//$loadNum.html(progress);
+				
+				// 修改为 图片字体
+				var numObj = progress.toString().split(''), numHtml = "";
+				for(var i = 0; i < numObj.length; i++ ){
+					numHtml += '<div class="num' + numObj[i] + '"></div>';
+				}
+				$loadNum.html(numHtml);
 			});
 			loader.start();
 		}
@@ -950,7 +958,13 @@ var $objCache = {};
 (function($) {
 
 	$(document).ready(function() {
-		puma.loading();
+		var loader = new PxLoader();
+		loader.addImage(puma.loadPath + 'num.png')
+		loader.addCompletionListener(function(e) {
+			puma.loading();
+		});
+		loader.start();
+
 		var initobj = {
 			win : $(window),
 			main : $('div.wrapper'),
